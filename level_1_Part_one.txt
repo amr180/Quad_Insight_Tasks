@@ -1,0 +1,44 @@
+part 1 
+=====
+
+Basics
+			Variables			done 
+			Data Types			done
+			Operators			done
+			Conditions          
+			Loops
+			Methods
+			Arrays
+			Lists
+			Dictionary
+			Exception Handling
+------------------------------------------------------------
+			
+OOP
+			Class & Object
+			Constructor
+			Encapsulation
+			Inheritance
+			Polymorphism
+			Abstraction
+			Interface
+---------------------------------------------------------
+LINQ
+			Where
+			Select
+			OrderBy
+			OrderByDescending
+			FirstOrDefault
+			SingleOrDefault
+			Any
+			All
+			Count
+			GroupBy
+------------------------------------------------------------
+Async Await
+			Task
+			async
+			await
+			Task<T>
+			الفرق بين Sync و Async
+			متى تستخدم async
