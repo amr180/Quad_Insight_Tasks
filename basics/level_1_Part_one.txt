@@ -10,18 +10,18 @@ Basics
 			
 			Operators			done postfix and prefix increment and decrement operators || math operators || logical operators || comparison operators || assignment operators
 									 
-			Conditions
-			Loops
-			Methods
-			Arrays
-			Lists
+			Conditions          done impelementing Conditional Logic  || if statement || if else statement || if else if statement || switch statement || ternary operator
+			Loops               done for loop || while loop || do while loop || foreach loop
+			Methods				
+			Arrays				done 1D arrays || 2D arrays || jagged arrays || array methods  (revasion decumentation) || defference between array and list
+			List				done related with system.collection || List methods || defference between array and list		   (revasion decumentation) || defference between array and list
 			Dictionary
 			Exception Handling
 ------------------------------------------------------------
 			
 OOP
-			Class & Object
-			Constructor
+			Class & Object      done
+			Constructor			done default constructor || parameterized constructor || static constructor || private constructor
 			Encapsulation
 			Inheritance
 			Polymorphism
