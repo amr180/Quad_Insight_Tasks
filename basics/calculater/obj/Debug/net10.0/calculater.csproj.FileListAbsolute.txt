@@ -1,0 +1,15 @@
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\calculater.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\calculater.AssemblyInfoInputs.cache
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\calculater.AssemblyInfo.cs
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\calculater.csproj.CoreCompileInputs.cache
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\calculater.sourcelink.json
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\bin\Debug\net10.0\calculater.exe
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\bin\Debug\net10.0\calculater.deps.json
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\bin\Debug\net10.0\calculater.runtimeconfig.json
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\bin\Debug\net10.0\calculater.dll
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\bin\Debug\net10.0\calculater.pdb
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\calculater.dll
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\refint\calculater.dll
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\calculater.pdb
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\calculater.genruntimeconfig.cache
+C:\Users\AMR\source\repos\Quad_Insight_Tasks\basics\calculater\obj\Debug\net10.0\ref\calculater.dll
