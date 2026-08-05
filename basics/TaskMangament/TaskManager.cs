@@ -12,7 +12,11 @@
 
             string title = Console.ReadLine();
 
-            TaskItem task = new TaskItem(nextId++, title);
+            Console.Write("Enter Task Description: ");
+
+            string description = Console.ReadLine();
+
+            TaskItem task = new TaskItem(nextId++, title, description);
 
             tasks.Add(task);
 
@@ -30,6 +34,8 @@
             foreach (TaskItem task in tasks)
             {
                 task.Display();
+                
+
             }
         }
 
@@ -47,17 +53,25 @@
                 return;
             }
 
-            Console.Write("Enter New Title: ");
+            Console.WriteLine($"Title : {task.Title}");
+            Console.WriteLine($"Description : {task.Description}");
+            Console.WriteLine($"Status : {(task.IsCompleted ? "Completed" : "Pending")}");
 
-            task.Title = Console.ReadLine();
+            Console.Write("Is Completed? (y/n): ");
+            if (task.IsCompleted)
+            {
+                Console.WriteLine("Task is already completed.");
+                return;
+            }
+            else
+            {
 
-            Console.Write("Completed? (y/n): ");
+                string answer = Console.ReadLine();
 
-            string answer = Console.ReadLine();
+                task.IsCompleted = answer.ToLower() == "y";
 
-            task.IsCompleted = answer.ToLower() == "y";
-
-            Console.WriteLine("Task Updated.");
+                Console.WriteLine("Task Updated.");
+            }
         }
 
         public void DeleteTask()
