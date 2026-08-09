@@ -8,7 +8,7 @@ Day_1 :
 					=>EF Code First -----> Add 3 Nuget Package (core , sql ,tools)									done
 													      Add Swagger												done
 					=>DbContext																						done
-								OnConfiguring						 												done
+								OnConfiguring,onModelCreating						 								done
 					=>Data																							done
 					=>Global																						done
 					
@@ -22,5 +22,5 @@ Day_1 :
 					=>IAction Results
 					=>Binding Data
 					=>Routing																						done
-					=>Add Services
+					=>Add Services																					done
 					=>Add Middelware
