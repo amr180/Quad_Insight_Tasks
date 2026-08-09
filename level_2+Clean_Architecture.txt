@@ -1,4 +1,4 @@
-🟢 المرحلة الأولى: أساسيات Web API
+🟢 المرحلة الأولى: أساسيات Web API  (done)
 
 
 			 إنشاء مشروع ASP.NET Core Web API
@@ -20,7 +20,7 @@
 			 استخدام Constructor Injection
 
 
-🟢 المرحلة الثالثة: Entity Framework Core
+🟢 المرحلة الثالثة: Entity Framework Core (done)
 
 
 			 تثبيت EF Core Packages
