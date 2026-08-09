@@ -7,14 +7,20 @@ Day_1 :
 					=>Add Model																						done
 					=>EF Code First -----> Add 3 Nuget Package (core , sql ,tools)									done
 													      Add Swagger												done
-					=>Advanced Code First RelationShip
-					=>Data Annotation | Fluent API
-							=>Migration
+					=>DbContext																						done
+								OnConfiguring						 												done
+					=>Data																							done
+					=>Global																						done
+					
+					=>Advanced Code First RelationShip																done												
+													=>	use Data Annotation | Fluent API							
+					=>Data Annotation | Fluent API                                                      
+							=>Migration														                        done
 							=>Validation 
 					=>Controllers
 					=>Action Results 
 					=>IAction Results
 					=>Binding Data
-					=>Routing
+					=>Routing																						done
 					=>Add Services
 					=>Add Middelware
