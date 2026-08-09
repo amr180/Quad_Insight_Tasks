@@ -71,7 +71,7 @@
 			 Delete Task
 
 
-🟢 المرحلة السابعة: Validation
+🟢 المرحلة السابعة: Validation  (done)
 
 
 			 Data Annotations
