@@ -2,11 +2,11 @@ ASP .Net_Level_2 (subTasks)
 ============
 Day_1 :
 =====
-					=>Create New Project           																done  
+					=>Create New Project           																	done  
 					=>Explorer Project File  																		done
 					=>Add Model																						done
-					=>EF Code First -----> Add 3 Nuget Package
-													      Add Swagger
+					=>EF Code First -----> Add 3 Nuget Package (core , sql ,tools)									done
+													      Add Swagger												done
 					=>Advanced Code First RelationShip
 					=>Data Annotation | Fluent API
 							=>Migration
