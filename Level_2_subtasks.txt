@@ -1,0 +1,20 @@
+ASP .Net_Level_2 (subTasks)
+============
+Day_1 :
+=====
+					=>Create New Project           																done  
+					=>Explorer Project File  																		done
+					=>Add Model																						done
+					=>EF Code First -----> Add 3 Nuget Package
+													      Add Swagger
+					=>Advanced Code First RelationShip
+					=>Data Annotation | Fluent API
+							=>Migration
+							=>Validation 
+					=>Controllers
+					=>Action Results 
+					=>IAction Results
+					=>Binding Data
+					=>Routing
+					=>Add Services
+					=>Add Middelware
