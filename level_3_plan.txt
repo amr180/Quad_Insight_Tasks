@@ -1,0 +1,45 @@
+1. HTML 
+
+					Semantic HTML														done
+					Forms																done
+					Input / Select / Button												done
+					Tables																done
+					Attributes															done
+					id و class 															done
+					<div> و <section> و <form>											done
+					أساسيات accessibility
+
+
+2. CSS — الأساسيات فقط
+راجع:
+
+					Box Model																done
+					Flexbox																	done
+					Grid																	done
+					Position																done
+					Responsive Design														done
+					Media Queries
+					Classes
+					CSS specificity
+
+3. أهم حاجة قبل Angular: JavaScript
+
+هنا بقى ماتستعجلش.
+
+Angular مبنية على TypeScript، وTypeScript مبنية فوق JavaScript، فلازم تكون فاهم JavaScript كويس نسبيًا.
+الأساسيات
+				Variables																done
+				let																		done
+				const																	done
+				Data Types																done
+				Operators																done
+				Conditions																done
+				Loops																	done
+				Functions																
+				مهم جدًا
+				Arrays
+				Objects
+				Destructuring
+				Spread Operator
+				Rest Operator
+				Template Literals
