@@ -18,9 +18,9 @@
 					Grid																	done
 					Position																done
 					Responsive Design														done
-					Media Queries
-					Classes
-					CSS specificity
+					Media Queries														    done
+					Classes																	done
+					CSS specificity															done
 
 3. أهم حاجة قبل Angular: JavaScript
 
@@ -35,11 +35,11 @@ Angular مبنية على TypeScript، وTypeScript مبنية فوق JavaScript
 				Operators																done
 				Conditions																done
 				Loops																	done
-				Functions																
+				Functions																done																
 				مهم جدًا
-				Arrays
-				Objects
-				Destructuring
+				Arrays																	done
+				Objects																	done
+				Destructuring															done
 				Spread Operator
 				Rest Operator
 				Template Literals
