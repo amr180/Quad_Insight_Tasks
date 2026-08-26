@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="TaskManagement" content="width=device-width, initial-scale=1.0">
     <title>TaskManagement</title>
-     <link rel="stylesheet" href="Dashboard.css"> 
+    <link rel="stylesheet" href="Dashboard.css"> 
 </head>
 
 <body>
 
     <header>
-        <h1 class="header-text">إضافة مستخدم جديد</h1>
         <div class="welcome-text">
             <span>مرحباً بك ياقائد</span>
         </div>
@@ -21,37 +20,39 @@
         <p>نظام إدارة المهام</p>
         <ul class="nav-items">
             <li>
-                <a href="">لوحة التحكم</a>
+                <a href=".../../Dashboard.html">لوحة التحكم</a>
             </li>
             <li>
-                <a href="">عرض كل المستخدمين </a>
+                <a href=".../../ViewUsers.html">عرض كل المستخدمين </a>
             </li>
             <li>
-                <a href=""> المهام المكتملة</a>
+                <a href=".../../CompletedTasks.html"> المهام المكتملة</a>
             </li>
             <li>
-                <a href="">المهام قيدالانتظار</a>
+                <a href=".../../PendingTasks.html">المهام قيدالانتظار</a>
             </li>
         </ul>
     </aside>
     <article class="main">
         <form>
+        <fieldset>
+            <legend><h1 class="header-text">إضافة مستخدم جديد</h1></legend>
             <label for="userName">اسم المستخدم</label>
-            <input type="text" id="userName" placeholder="أدخل اسم المستخدم">
+            <input type="text" id="userName" class="" placeholder="أدخل اسم المستخدم">
 
             <label for="userEmail" class="form-label fw-semibold">البريد الإلكتروني</label>
             <input type="email" class="form-control" id="userEmail5" placeholder="name@example.com">
             <hr>
             <h5 class="text_system">مهام المستخدم</h5>
-            <button type="button">إضافة مهمة رئيسية</button>
+            <button type="button"class="">إضافة مهمة رئيسية</button>
             <div class="highlight text">
-                لم يتم إسناد مهام بعد. اضغط على "إضافة مهمة رئيسية" لبدء الإضافة.
+                لم يتم إسناد مهام بعد. اضغط على "إضافة مهمة رئيسية" لبدء الإضافة
             </div>
 
             <!-- Action Buttons -->
-            <button type="button" class="btn btn-secondary px-4">إلغاء</button>
-            <button type="submit" class="btn btn-primary px-4">حفظ المستخدم</button>
-
+            <button type="button" id="Cancel" class="Cancel">إلغاء</button>
+            <button type="submit" id="Save" class="Save">حفظ المستخدم</button>
+        </fieldset>
         </form>
     </article>
 
