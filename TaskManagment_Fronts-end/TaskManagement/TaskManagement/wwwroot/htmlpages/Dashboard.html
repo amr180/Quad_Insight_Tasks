@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="TaskManagement" content="width=device-width, initial-scale=1.0">
     <title>TaskManagement</title>
-    <link rel="stylesheet" href="Dashboard.css"> 
+    <base href="../../wwwroot/" target="_blank">
+    <link rel="stylesheet" href="/StylePages/Dashboard.css"> 
 </head>
 
 <body>
+    <noscript>you close java script please open it</noscript>
 
     <header>
         <div class="welcome-text">
@@ -16,20 +18,20 @@
     </header>
 
     <aside>
-        <h5>Quad Insight</h5>  <img class="sidebar-logo" src="" alt="quad-logo">
+        <h5>Quad Insight</h5>  <img class="sidebar-logo" src="Images/quad_insight_logo.jpeg" alt="quad-logo">
         <p>نظام إدارة المهام</p>
         <ul class="nav-items">
             <li>
-                <a href=".../../Dashboard.html">لوحة التحكم</a>
+                <a href="/htmlpages/Dashboard.html">لوحة التحكم</a>
             </li>
             <li>
-                <a href=".../../ViewUsers.html">عرض كل المستخدمين </a>
+                <a href="/htmlpages/ViewUsers.html">عرض كل المستخدمين </a>
             </li>
             <li>
-                <a href=".../../CompletedTasks.html"> المهام المكتملة</a>
+                <a href="/htmlpages/CompletedTasks.html"> المهام المكتملة</a>
             </li>
             <li>
-                <a href=".../../PendingTasks.html">المهام قيدالانتظار</a>
+                <a href="/htmlpages/PendingTasks.html">المهام قيدالانتظار</a>
             </li>
         </ul>
     </aside>
@@ -37,11 +39,11 @@
         <form>
         <fieldset>
             <legend><h1 class="header-text">إضافة مستخدم جديد</h1></legend>
-            <label for="userName">اسم المستخدم</label>
-            <input type="text" id="userName" class="" placeholder="أدخل اسم المستخدم">
-
-            <label for="userEmail" class="form-label fw-semibold">البريد الإلكتروني</label>
-            <input type="email" class="form-control" id="userEmail5" placeholder="name@example.com">
+            <label for="userName" >اسم المستخدم</label>
+            <input type="text" id="userName" class="addData" name="addname" placeholder="أدخل اسم المستخدم" required>
+            <br>
+            <label for="userEmail" class="userEmail">البريد الإلكتروني</label>
+            <input type="email" id="userEmail" class="userEmail" name="useremail" placeholder="name@example.com" required>
             <hr>
             <h5 class="text_system">مهام المستخدم</h5>
             <button type="button"class="">إضافة مهمة رئيسية</button>
@@ -50,15 +52,15 @@
             </div>
 
             <!-- Action Buttons -->
-            <button type="button" id="Cancel" class="Cancel">إلغاء</button>
-            <button type="submit" id="Save" class="Save">حفظ المستخدم</button>
+            <input type="reset" id="cancel" class="Cancel" value="إلغاء"></input>
+            <input type="submit" id="save" class="Save" value="حفظ المستخدم"></input>
         </fieldset>
         </form>
     </article>
 
 </body>
 <footer>
-    <img clsss="quad_logo"src=".../../Images/quad_insight_logo.jpeg" alt="loge of quad_insight"  > 
+    <img clsss="quad_logo"src="Images/quad_insight_logo.jpeg" alt="loge of quad_insight"  > 
 <figure>
  
 <figcaption class="caption">Founded in 2021, Quad Insight started with a vision to simplify and elevate veterinary operations. We launched VetICare as a desktop solution for clinics to streamline their workflows, simplify client communication, and reduce manual paperwork.</figcaption>
