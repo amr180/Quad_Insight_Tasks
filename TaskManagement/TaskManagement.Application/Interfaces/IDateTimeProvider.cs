@@ -7,6 +7,7 @@ namespace TaskManagement.Application.Interfaces
     public interface IDateTimeProvider
     {
         DateTime UtcNow { get; }
-        DateTime ConvertToUserLocalTime(DateTime utcDateTime, string timeZoneId);
+        //لو هخلي الباك هو اللي يحول الوقت
+        //DateTime ConvertToUserLocalTime(DateTime utcDateTime, string timeZoneId);
     }
 }
