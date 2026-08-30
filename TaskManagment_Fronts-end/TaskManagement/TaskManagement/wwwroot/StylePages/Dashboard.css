@@ -55,7 +55,8 @@ aside {
 }
 
 .sidebar-header p {
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: bold;
     color: var(--accent-color);
     font-weight: 600;
 }
@@ -70,7 +71,7 @@ aside {
     padding: 12px 24px;
     color: #cbd5e1;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 18px;
     transition: all 0.3s ease;
     border-right: 4px solid transparent;
 }
@@ -97,7 +98,7 @@ header.page-header {
 }
 
 header.page-header h1 {
-    font-size: 22px;
+    font-size: 26px;
     color: var(--primary-color);
 }
 
@@ -114,7 +115,7 @@ header.page-header h1 {
 }
 
 .card-form legend h2 {
-    font-size: 18px;
+    font-size: 22px;
     color: var(--primary-color);
     margin-bottom: 20px;
     padding-bottom: 10px;
@@ -128,7 +129,7 @@ header.page-header h1 {
 
 .form-group label {
     display: block;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 6px;
     color: var(--primary-color);
@@ -139,7 +140,7 @@ header.page-header h1 {
     padding: 10px 14px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 19px;
     outline: none;
     transition: border-color 0.2s;
 }
@@ -170,8 +171,12 @@ header.page-header h1 {
     color: #b45309;
     padding: 12px 16px;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 20px;
+}
+.highlight-box:hover{
+      transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.238);
 }
 
 .form-actions {
@@ -187,6 +192,7 @@ header.page-header h1 {
     border: none;
     padding: 10px 24px;
     border-radius: 6px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
@@ -194,18 +200,20 @@ header.page-header h1 {
 
 .btn-save:hover {
     background-color: #e09216;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .btn-cancel {
     background-color: transparent;
     color: var(--text-muted);
     border: 1px solid var(--border-color);
+    font-size: 16px;
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
 }
 
-/* الفوتر */
 footer {
     background-color: var(--primary-dark);
     color: #94a3b8;
@@ -217,7 +225,7 @@ footer {
 }
 
 footer .quad_logo {
-    width: 50px;
+    width: 90px;
     height: auto;
     border-radius: 6px;
 }

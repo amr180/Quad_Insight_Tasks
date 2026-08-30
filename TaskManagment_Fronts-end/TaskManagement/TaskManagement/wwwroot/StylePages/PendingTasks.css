@@ -3,7 +3,11 @@
 .task-card {
     background: var(--card-bg);
     border-radius: 8px;
+    margin-bottom: 20px;
     padding: 15px;
     border-right: 4px solid var(--accent-color);
-    margin-bottom: 10px;
+}
+.task-card:hover{
+      transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(244, 179, 0, 0.241);
 }
