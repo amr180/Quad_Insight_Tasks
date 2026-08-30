@@ -3,14 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quad Insight | جميع المستخدمين</title>
+    <title>TaskManagement | عرض كافة المستخدمين</title>
     <link rel="stylesheet" href="/StylePages/quad-loader.css">
     <link rel="stylesheet" href="/StylePages/ViewUsers.css">
+    <style>
+        /* إضافة جدول متناسق مع تصميم الصفحة */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .data-table th, .data-table td {
+            padding: 12px 16px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .data-table th {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+        .data-table td {
+            font-size: 14px;
+            color: var(--text-color);
+        }
+        .data-table tr:hover {
+            background-color: rgba(245, 166, 35, 0.05);
+        }
+    </style>
 </head>
-<body>
-    <noscript>الرجاء تفعيل الجافا سكريبت لعرض الموقع بشكل صحيح</noscript>
 
-    <!-- Quad Insight Global Loader -->
+<body>
+    <noscript>شغل الجافا ياااعم</noscript>
+
+    <!-- Global Loader -->
     <div id="global-loader">
         <div class="loader-card">
             <div class="logo-grid">
@@ -20,7 +46,7 @@
                 <div class="square sq-4"></div>
             </div>
             <h1 class="brand-title">Quad <span>Insight</span></h1>
-            <p class="status-message" id="statusMessage">جاري بدء التشغيل...</p>
+            <p class="status-message" id="statusMessage">جاري جلب بيانات المستخدمين...</p>
             <div class="progress-track">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
@@ -28,34 +54,66 @@
         </div>
     </div>
 
-    <header class="title">
-        <h3>جميع المستخدمين</h3>
-    </header>
-    <aside>
-        <img class="sidebar-logo" src="/Images/quad_insight_logo.jpeg" alt="quad-logo">
-        <p>نظام إدارة المهام</p>
-        <ul class="nav-items">
-            <li>
-                <a href="/htmlpages/Dashboard.html">لوحة التحكم</a>
-            </li>
-            <li>
-                <a href="/htmlpages/ViewUsers.html">عرض كل المستخدمين </a>
-            </li>
-            <li>
-                <a href="/htmlpages/CompletedTasks.html"> المهام المكتملة</a>
-            </li>
-            <li>
-                <a href="/htmlpages/PendingTasks.html">المهام قيدالانتظار</a>
-            </li>
-        </ul>
-    </aside>
-    <article>
-        <form>
-            <fieldset>
-                <legend><h3>عرض كل المستخدمين</h3></legend>
-            </fieldset>
-        </form>
-    </article>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-header">
+                <img class="sidebar-logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo">
+                <p>نظام إدارة المهام</p>
+            </div>
+            <ul class="nav-items">
+                <li><a href="/htmlpages/Dashboard.html">لوحة التحكم</a></li>
+                <li><a href="/htmlpages/ViewUsers.html" class="active">عرض كل المستخدمين</a></li>
+                <li><a href="/htmlpages/CompletedTasks.html">المهام المكتملة</a></li>
+                <li><a href="/htmlpages/PendingTasks.html">المهام قيد الانتظار</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="page-header">
+                <h1>قائمة المستخدمين والمسؤولين</h1>
+            </header>
+
+            <section class="card-form">
+                <h2 style="font-size: 18px; color: var(--primary-color); margin-bottom: 15px;">المستخدمين المسجلين في النظام</h2>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>اسم المستخدم</th>
+                            <th>البريد الإلكتروني</th>
+                            <th>المهام المعينة</th>
+                            <th>الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>أحمد محمود</td>
+                            <td>ahmed@quadinsight.com</td>
+                            <td>4 مهام</td>
+                            <td><span style="color: #047857; font-weight: bold;">نشط</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>سارة علي</td>
+                            <td>sara@quadinsight.com</td>
+                            <td>2 مهام</td>
+                            <td><span style="color: #047857; font-weight: bold;">نشط</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <img class="quad_logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo">
+        <p>Founded in 2021, Quad Insight started with a vision to simplify and elevate veterinary operations. We launched VetICare as a desktop solution for clinics to streamline their workflows, simplify client communication, and reduce manual paperwork.</p>
+    </footer>
 
     <script src="/Scripts/quad-loader.js"></script>
 </body>
