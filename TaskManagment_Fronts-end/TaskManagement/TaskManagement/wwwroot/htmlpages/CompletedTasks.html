@@ -1,37 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=V, initial-scale=1.0">
-    <title>Completed Tasks</title>
-    <link rel="stylesheet" href="../StylePages/CompletedTasks.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskManagement | المهام المكتملة</title>
+    <link rel="stylesheet" href="/StylePages/quad-loader.css">
+    <link rel="stylesheet" href="/StylePages/CompletedTasks.css">
 </head>
+
 <body>
-    <aside>
-        <h5>Quad Insight</h5>  <img class="sidebar-logo" src="" alt="quad-logo">
-        <p>نظام إدارة المهام</p>
-        <ul class="nav-items">
-            <li>
-                <a href=".../../Dashboard.html">لوحة التحكم</a>
-            </li>
-            <li>
-                <a href=".../../ViewUsers.html">عرض كل المستخدمين </a>
-            </li>
-            <li>
-                <a href=".../../CompletedTasks.html"> المهام المكتملة</a>
-            </li>
-            <li>
-                <a href=".../../PendingTasks.html">المهام قيدالانتظار</a>
-            </li>
-        </ul>
-    </aside>
-<article>
-    <form>
-        <fieldset>
-            <legend><h3>عرض المهام المكتمله</h3></legend>
-        </fieldset>
-    </form>
-</article>
-    
+    <noscript>شغل الجافا سكربت </noscript>
+
+    <!-- Global Loader -->
+    <div id="global-loader">
+        <div class="loader-card">
+            <div class="logo-grid">
+                <div class="square sq-1"></div>
+                <div class="square sq-2"></div>
+                <div class="square sq-3"></div>
+                <div class="square sq-4"></div>
+            </div>
+            <h1 class="brand-title">Quad <span>Insight</span></h1>
+            <p class="status-message" id="statusMessage">جاري تحميل المهام المكتملة...</p>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="percentage-indicator" id="percentageIndicator">0%</div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside>
+            <div class="sidebar-header">
+                <img class="sidebar-logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo">
+                <p>نظام إدارة المهام</p>
+            </div>
+            <ul class="nav-items">
+                <li><a href="/htmlpages/Dashboard.html">لوحة التحكم</a></li>
+                <li><a href="/htmlpages/ViewUsers.html">عرض كل المستخدمين</a></li>
+                <li><a href="/htmlpages/CompletedTasks.html" class="active">المهام المكتملة</a></li>
+                <li><a href="/htmlpages/PendingTasks.html">المهام قيد الانتظار</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="page-header">
+                <h1>سجل المهام المكتملة</h1>
+            </header>
+
+            <section class="card-form">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h2 style="font-size: 18px; color: var(--primary-color);">قائمة المهام الإنجازية</h2>
+                    <span style="background-color: #d1fae5; color: #047857; padding: 4px 12px; border-radius: 20px; font-size: 13px; font-weight: bold;">
+                        جاهزة ومكتملة
+                    </span>
+                </div>
+
+                <div class="task-card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 5px;">تحديث قاعدة بيانات العيادات البيطرية</h3>
+                    <p style="color: var(--text-muted); font-size: 14px;">تم إكمال تحديث السجلات وربطها بنظام VetICare بنجاح.</p>
+                </div>
+
+                <div class="task-card">
+                    <h3 style="color: var(--primary-color); margin-bottom: 5px;">تصميم واجهات المستخدم الجديدة</h3>
+                    <p style="color: var(--text-muted); font-size: 14px;">تطبيق ألوان الهوية البصرية لـ Quad Insight وتجهيز التنسيقات.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <img class="quad_logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo">
+        <p>Founded in 2021, Quad Insight started with a vision to simplify and elevate veterinary operations. We launched VetICare as a desktop solution for clinics to streamline their workflows, simplify client communication, and reduce manual paperwork.</p>
+    </footer>
+
+    <script src="/Scripts/quad-loader.js"></script>
 </body>
 </html>

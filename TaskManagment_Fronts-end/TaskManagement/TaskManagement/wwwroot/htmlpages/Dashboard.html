@@ -1,71 +1,91 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="TaskManagement" content="width=device-width, initial-scale=1.0">
-    <title>TaskManagement</title>
-    <base href="../../wwwroot/" target="_blank">
-    <link rel="stylesheet" href="/StylePages/Dashboard.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskManagement | لوحة التحكم</title>
+    <link rel="stylesheet" href="/StylePages/quad-loader.css">
+    <link rel="stylesheet" href="/StylePages/Dashboard.css">
 </head>
 
 <body>
-    <noscript>you close java script please open it</noscript>
+    <noscript>الرجاء تفعيل الجافا سكريبت لعرض الموقع بشكل صحيح</noscript>
 
-    <header>
-        <div class="welcome-text">
-            <span>مرحباً بك ياقائد</span>
-        </div>
-    </header>
-
-    <aside>
-        <h5>Quad Insight</h5>  <img class="sidebar-logo" src="Images/quad_insight_logo.jpeg" alt="quad-logo">
-        <p>نظام إدارة المهام</p>
-        <ul class="nav-items">
-            <li>
-                <a href="/htmlpages/Dashboard.html">لوحة التحكم</a>
-            </li>
-            <li>
-                <a href="/htmlpages/ViewUsers.html">عرض كل المستخدمين </a>
-            </li>
-            <li>
-                <a href="/htmlpages/CompletedTasks.html"> المهام المكتملة</a>
-            </li>
-            <li>
-                <a href="/htmlpages/PendingTasks.html">المهام قيدالانتظار</a>
-            </li>
-        </ul>
-    </aside>
-    <article class="main">
-        <form>
-        <fieldset>
-            <legend><h1 class="header-text">إضافة مستخدم جديد</h1></legend>
-            <label for="userName" >اسم المستخدم</label>
-            <input type="text" id="userName" class="addData" name="addname" placeholder="أدخل اسم المستخدم" required>
-            <br>
-            <label for="userEmail" class="userEmail">البريد الإلكتروني</label>
-            <input type="email" id="userEmail" class="userEmail" name="useremail" placeholder="name@example.com" required>
-            <hr>
-            <h5 class="text_system">مهام المستخدم</h5>
-            <button type="button"class="">إضافة مهمة رئيسية</button>
-            <div class="highlight text">
-                لم يتم إسناد مهام بعد. اضغط على "إضافة مهمة رئيسية" لبدء الإضافة
+    <div id="global-loader">
+        <div class="loader-card">
+            <div class="logo-grid">
+                <div class="square sq-1"></div>
+                <div class="square sq-2"></div>
+                <div class="square sq-3"></div>
+                <div class="square sq-4"></div>
             </div>
+            <h1 class="brand-title">Quad <span>Insight</span></h1>
+            <p class="status-message" id="statusMessage">جاري بدء التشغيل...</p>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="percentage-indicator" id="percentageIndicator">0%</div>
+        </div>
+    </div>
 
-            <!-- Action Buttons -->
-            <input type="reset" id="cancel" class="Cancel" value="إلغاء"></input>
-            <input type="submit" id="save" class="Save" value="حفظ المستخدم"></input>
-        </fieldset>
-        </form>
-    </article>
+    <div class="app-container">
+        <aside>
+            <div class="sidebar-header">
+                <img class="sidebar-logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo">
+                <p>نظام إدارة المهام</p>
+            </div>
+            <ul class="nav-items">
+                <li><a href="/htmlpages/Dashboard.html" class="active">لوحة التحكم</a></li>
+                <li><a href="/htmlpages/ViewUsers.html">عرض كل المستخدمين</a></li>
+                <li><a href="/htmlpages/CompletedTasks.html">المهام المكتملة</a></li>
+                <li><a href="/htmlpages/PendingTasks.html">المهام قيد الانتظار</a></li>
+            </ul>
+        </aside>
 
+        <main class="main-content">
+            <header class="page-header">
+                <h1>مرحباً بك يا قائد</h1>
+            </header>
+
+            <section class="card-form">
+                <form>
+                    <fieldset>
+                        <legend><h2>إضافة مستخدم جديد</h2></legend>
+                        
+                        <div class="form-group">
+                            <label for="userName">اسم المستخدم</label>
+                            <input type="text" id="userName" class="form-control" name="addname" placeholder="أدخل اسم المستخدم" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="userEmail">البريد الإلكتروني</label>
+                            <input type="email" id="userEmail" class="form-control" name="useremail" placeholder="name@example.com" required>
+                        </div>
+
+                        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 20px 0;">
+
+                        <h3 style="font-size: 16px; color: var(--primary-color);">مهام المستخدم</h3>
+                        <button type="button" class="btn-secondary-action">+ إضافة مهمة رئيسية</button>
+
+                        <div class="highlight-box">
+                            لم يتم إسناد مهام بعد. اضغط على "إضافة مهمة رئيسية" لبدء الإضافة.
+                        </div>
+
+                        <div class="form-actions">
+                            <input type="reset" id="cancel" class="btn-cancel" value="إلغاء">
+                            <input type="submit" id="save" class="btn-save" value="حفظ المستخدم">
+                        </div>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <img class="quad_logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo">
+        <p>Founded in 2021, Quad Insight started with a vision to simplify and elevate veterinary operations. We launched VetICare as a desktop solution for clinics to streamline their workflows, simplify client communication, and reduce manual paperwork.</p>
+    </footer>
+
+    <script src="/Scripts/quad-loader.js"></script>
 </body>
-<footer>
-    <img clsss="quad_logo"src="Images/quad_insight_logo.jpeg" alt="loge of quad_insight"  > 
-<figure>
- 
-<figcaption class="caption">Founded in 2021, Quad Insight started with a vision to simplify and elevate veterinary operations. We launched VetICare as a desktop solution for clinics to streamline their workflows, simplify client communication, and reduce manual paperwork.</figcaption>
-</figure>
-
-</footer>
-
 </html>
