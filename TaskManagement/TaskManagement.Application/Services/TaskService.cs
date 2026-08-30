@@ -32,14 +32,9 @@ public class TaskService : ITaskService
             throw new ArgumentException("Task title is required.");
 
         // Check User
-        if (dto.UserId.HasValue)
-        {
-            var userExists =
-                await _userRepository.ExistsAsync(dto.UserId.Value);
-
+            var userExists = await _userRepository.ExistsAsync(dto.UserId);
             if (!userExists)
                 throw new KeyNotFoundException("User not found.");
-        }
 
         // Check Parent Task
         if (dto.ParentTaskId.HasValue)
@@ -54,8 +49,8 @@ public class TaskService : ITaskService
 
         var task = new TaskItem(
             dto.Title,
-            dto.Description,
             dto.UserId,
+            dto.Description,
             dto.ParentTaskId);
 
         await _taskRepository.AddAsync(task);
@@ -101,16 +96,11 @@ public class TaskService : ITaskService
             throw new KeyNotFoundException(
                 "Task not found.");
 
-        // Check User
-        if (dto.UserId.HasValue)
-        {
-            var userExists =
-                await _userRepository.ExistsAsync(dto.UserId.Value);
+        // Check User (must check)
+        var userExists = await _userRepository.ExistsAsync(dto.UserId);
 
-            if (!userExists)
-                throw new KeyNotFoundException(
-                    "User not found.");
-        }
+        if (!userExists)
+            throw new KeyNotFoundException("User not found.");
 
         task.Update(
             dto.Title,

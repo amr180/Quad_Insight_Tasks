@@ -30,9 +30,8 @@ public class TaskItem
     public DateTime CreatedAt { get; private set; }
 
     // User Relationship
-    public int? UserId { get; private set; }
-
-    public User? User { get; private set; }
+    public int UserId { get; private set; }
+    public User User { get; private set; } = null!;
 
     // Parent Task Relationship
     public int? ParentTaskId { get; private set; }
@@ -50,26 +49,27 @@ public class TaskItem
 
     public TaskItem(
         string title,
+        int userId,
         string? description = null,
-        int? userId = null,
         int? parentTaskId = null)
     {
         SetTitle(title);
         SetDescription(description);
+       
+        if (userId <= 0)
+            throw new ArgumentException("User ID must be valid.");
 
         UserId = userId;
         ParentTaskId = parentTaskId;
 
-        Status =
-            TaskManagement.Domain.Enums.TaskStatus.Pending;
-
+        Status = Enums.TaskStatus.Pending;
         CreatedAt = DateTime.UtcNow;
     }
 
     public void Update(
         string title,
         string? description,
-        int? userId)
+        int userId)
     {
         SetTitle(title);
         SetDescription(description);
