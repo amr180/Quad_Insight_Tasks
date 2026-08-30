@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using TaskManagement.API.Middleware;
+using TaskManagement.Application.Helpers;
 using TaskManagement.Application.Interfaces;
 using TaskManagement.Application.Services;
 using TaskManagement.Infrastructure.Data;
 using TaskManagement.Infrastructure.Repositories;
-using TaskManagement.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,7 +33,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Services
 
-
+builder.Services.AddScoped<IDateTimeProvider, DateTimeProvider>(); //for utc 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITaskService, TaskService>();
 var app = builder.Build();

@@ -10,20 +10,21 @@ public class TaskService : ITaskService
     private readonly ITaskRepository _taskRepository;
     private readonly IUserRepository _userRepository;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IDateTimeProvider _dateTimeProvider;
 
     public TaskService(
         ITaskRepository taskRepository,
         IUserRepository userRepository,
-        IUnitOfWork unitOfWork)
+        IUnitOfWork unitOfWork,
+        IDateTimeProvider dateTimeProvider)
     {
         _taskRepository = taskRepository;
         _userRepository = userRepository;
         _unitOfWork = unitOfWork;
+        _dateTimeProvider = dateTimeProvider;
     }
 
-    // =========================
     // Create Task
-    // =========================
 
     public async Task<int> CreateAsync(CreateTaskDto dto)
     {
@@ -64,9 +65,7 @@ public class TaskService : ITaskService
         return task.Id;
     }
 
-    // =========================
     // Get All Tasks
-    // =========================
 
     public async Task<IEnumerable<object>> GetAllAsync()
     {
@@ -75,10 +74,7 @@ public class TaskService : ITaskService
         return tasks.Select(MapTask);
     }
 
-    // =========================
     // Get Task By Id
-    // =========================
-
     public async Task<object?> GetByIdAsync(int id)
     {
         var task = await _taskRepository.GetByIdAsync(id);
@@ -89,9 +85,7 @@ public class TaskService : ITaskService
         return MapTask(task);
     }
 
-    // =========================
     // Update Task
-    // =========================
 
     public async Task UpdateAsync(
         int id,
@@ -128,9 +122,7 @@ public class TaskService : ITaskService
         await _unitOfWork.SaveChangesAsync();
     }
 
-    // =========================
     // Delete Task
-    // =========================
 
     public async Task DeleteAsync(int id)
     {
@@ -154,9 +146,7 @@ public class TaskService : ITaskService
         await _unitOfWork.SaveChangesAsync();
     }
 
-    // =========================
     // Update Status
-    // =========================
 
     public async Task UpdateStatusAsync(
         int id,
@@ -193,9 +183,7 @@ public class TaskService : ITaskService
         await _unitOfWork.SaveChangesAsync();
     }
 
-    // =========================
     // Get Tasks By User
-    // =========================
 
     public async Task<IEnumerable<object>> GetByUserIdAsync(
         int userId)
@@ -213,9 +201,7 @@ public class TaskService : ITaskService
         return tasks.Select(MapTask);
     }
 
-    // =========================
     // Get Sub Tasks
-    // =========================
 
     public async Task<IEnumerable<object>> GetSubTasksAsync(
         int parentTaskId)
@@ -233,10 +219,7 @@ public class TaskService : ITaskService
         return subTasks.Select(MapTask);
     }
 
-    // =========================
     // Mapping
-    // =========================
-
     private static object MapTask(TaskItem task)
     {
         return new
