@@ -25,14 +25,12 @@ body {
     flex-direction: column;
 }
 
-/* التنسيق العام للتخطيط المرن */
+/* general design*/
 .app-container {
     display: flex;
     flex: 1;
     width: 100%;
 }
-
-/* القائمة الجانبية (Sidebar) */
 aside {
     width: var(--sidebar-width);
     background-color: var(--primary-dark);
@@ -82,8 +80,6 @@ aside {
     color: var(--accent-color);
     border-right-color: var(--accent-color);
 }
-
-/* المنطقة الرئيسية */
 main.main-content {
     flex: 1;
     padding: 30px;
@@ -105,7 +101,6 @@ header.page-header h1 {
     color: var(--primary-color);
 }
 
-/* النموذج والـ Form Elements */
 .card-form {
     background: var(--card-bg);
     border-radius: 12px;

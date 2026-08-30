@@ -1,0 +1,42 @@
+@import url('Dashboard.css');
+
+/* done cards */
+.task-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    /* done */
+    border-right: 5px solid #10b981; 
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.task-card h3 {
+    color: var(--primary-color);
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.task-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.task-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+    font-size: 12px;
+    color: var(--text-muted);
+}
