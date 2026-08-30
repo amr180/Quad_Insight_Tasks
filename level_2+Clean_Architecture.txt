@@ -1,0 +1,209 @@
+🟢 المرحلة الأولى: أساسيات Web API  (done)
+
+
+			 إنشاء مشروع ASP.NET Core Web API
+			 فهم بنية المشروع
+			 التعرف على Controllers
+			 فهم Routing
+			 فهم HTTP Methods (GET - POST - PUT - DELETE)
+			 فهم Status Codes
+			 تجربة Swagger
+			 إنشاء أول Endpoint
+
+
+🟢 المرحلة الثانية: Dependency Injection
+
+
+			 فهم مفهوم Dependency Injection
+			 الفرق بين Singleton / Scoped / Transient
+			 تسجيل Services داخل Program.cs
+			 استخدام Constructor Injection
+
+
+🟢 المرحلة الثالثة: Entity Framework Core (done)
+
+
+			 تثبيت EF Core Packages
+			 إنشاء DbContext
+			 إنشاء Connection String
+			 ربط SQL Server
+			 فهم Code First
+			 إنشاء أول Migration
+			 Update Database
+			 تجربة CRUD على قاعدة البيانات
+
+
+🟢 المرحلة الرابعة: Database Design
+
+
+			 إنشاء User Entity
+			 إنشاء Task Entity
+			 إنشاء العلاقة One-to-Many
+			 إضافة Foreign Key
+			 اختبار العلاقة داخل قاعدة البيانات
+
+
+
+🟢 المرحلة الخامسة: DTOs
+
+
+			 إنشاء Create DTO
+			 إنشاء Update DTO
+			 إنشاء Response DTO
+			 منع إرسال الـ Entity مباشرة من الـ API
+
+
+
+🟢 المرحلة السادسة: CRUD Operations
+
+
+			Users
+			 Get All Users
+			 Get User By Id
+			 Create User
+			 Update User
+			 Delete User
+			Tasks
+			 Get All Tasks
+			 Get Task By Id
+			 Create Task
+			 Update Task
+			 Delete Task
+
+
+🟢 المرحلة السابعة: Validation  (done)
+
+
+			 Data Annotations
+			 Required
+			 MaxLength
+			 Email Validation
+			 تجربة FluentValidation (اختياري)
+
+
+🟢 المرحلة الثامنة: Middleware
+
+
+			 فهم Request Pipeline
+			 إنشاء Middleware
+			 Global Exception Handling Middleware
+			 إرجاع Error Response موحد
+
+
+
+🟢 المرحلة التاسعة: Clean Architecture ⭐
+
+
+			Domain
+			 إنشاء Domain Layer
+			 إنشاء Entities
+			 إنشاء Interfaces
+			Application
+			 إنشاء Application Layer
+			 إنشاء DTOs
+			 إنشاء Services
+			 إنشاء Mapping
+			 إنشاء Validators
+			Infrastructure
+			 إنشاء Infrastructure Layer
+			 EF Core
+			 DbContext
+			 Repositories
+			 Dependency Injection
+			Presentation
+			 إنشاء Web API Layer
+			 Controllers
+			 Middleware
+			 Program.cs
+
+
+🟢 المرحلة العاشرة: Repository Pattern
+
+
+
+			 إنشاء Generic Repository
+			 إنشاء IUserRepository
+			 إنشاء ITaskRepository
+			 تنفيذ Repositories
+			 تسجيلها في Dependency Injection
+
+
+🟢 المرحلة الحادية عشرة: AutoMapper
+
+
+ تثبيت AutoMapper
+ إنشاء Mapping Profiles
+ تحويل Entity ⇄ DTO
+
+
+🟢 المرحلة الثانية عشرة: المشروع النهائي (Task Management API)
+
+
+Users
+ Create User
+ Update User
+ Delete User
+ Get User
+ Get All Users
+Tasks
+ Create Task
+ Update Task
+ Delete Task
+ Get Task
+ Get All Tasks
+ Get Tasks By User
+العلاقات
+ User يمتلك أكثر من Task
+ منع إنشاء Task لمستخدم غير موجود
+ حذف المستخدم ومعالجة الـ Tasks بالشكل المناسب
+Validation
+ التحقق من جميع البيانات المدخلة
+ رسائل أخطاء واضحة
+Exception Handling
+ معالجة جميع الأخطاء داخل Middleware
+Swagger
+ توثيق وتجربة جميع الـ Endpoints
+⭐ Bonus (بعد إنهاء التاسك)
+ Pagination
+ Filtering
+ Sorting
+ Searching
+ Soft Delete
+ Logging
+ Response Wrapper
+ Unit of Work
+ JWT Authentication
+ Authorization
+ Refresh Tokens
+ Role-Based Authorization
+ Docker (تشغيل المشروع بالحاويات)
+ كتابة Unit Tests
+📌 شكل المشروع النهائي (Clean Architecture)
+TaskManagementApi.sln
+│
+├── TaskManagement.Api
+│
+├── TaskManagement.Application
+│
+├── TaskManagement.Domain
+│
+├── TaskManagement.Infrastructure
+│
+└── TaskManagement.Shared (اختياري)
+🎯 الهدف النهائي
+
+في نهاية الـ Level ده يكون عندك مشروع Task Management API مبني بـ:
+
+✅ ASP.NET Core Web API
+✅ Clean Architecture
+✅ Entity Framework Core (Code First)
+✅ Repository Pattern
+✅ Dependency Injection
+✅ DTOs
+✅ AutoMapper
+✅ Validation
+✅ Global Exception Handling Middleware
+✅ Swagger
+✅ SQL Server
+
+وده يعتبر مشروع قوي جدًا تحطه في الـ GitHub والـ Portfolio، وكمان هيبقى أساس ممتاز قبل الانتقال لموضوعات زي JWT Authentication وCQRS وMediatR في المراحل المتقدمة.
