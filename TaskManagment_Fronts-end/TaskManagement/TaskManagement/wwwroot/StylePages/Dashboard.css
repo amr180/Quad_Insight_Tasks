@@ -33,6 +33,7 @@ body {
 }
 aside {
     width: var(--sidebar-width);
+    border-radius: 20px 0 0 0px;
     background-color: var(--primary-dark);
     color: #ffffff;
     display: flex;
@@ -52,6 +53,7 @@ aside {
     height: auto;
     border-radius: 8px;
     margin-bottom: 10px;
+
 }
 
 .sidebar-header p {

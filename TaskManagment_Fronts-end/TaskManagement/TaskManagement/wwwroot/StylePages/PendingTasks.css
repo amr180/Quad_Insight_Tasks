@@ -1,6 +1,7 @@
 @import url('Dashboard.css');
 
 .task-card {
+    display:flex ;
     background: var(--card-bg);
     border-radius: 8px;
     margin-bottom: 20px;
@@ -10,4 +11,100 @@
 .task-card:hover{
       transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(244, 179, 0, 0.241);
+}
+.card-head{
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 20px;
+}
+.card-head h2{
+    font-size: 18px; 
+    color: var(--primary-color);
+}
+.card-head span{
+    background-color: #fef3c7; 
+    color: #b45309; padding: 4px 12px; 
+    border-radius: 20px; 
+    font-size: 13px; 
+    font-weight: bold;
+}
+.task-assignee {
+    order: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 220px;
+
+    direction: ltr;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #dbeafe;
+    color: #2563eb;
+
+    border-radius: 10px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.assignee-info {
+    direction: rtl;
+    text-align: right;
+}
+
+.assignee-info h4 {
+    margin: 0;
+
+    color: var(--primary-color);
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.task-content {
+    order: 1;
+
+    flex: 1;
+
+    min-width: 0;
+
+    margin-right: 20px;
+
+    direction: rtl;
+    text-align: right;
+}
+
+.task-content h3 {
+    margin: 0 0 8px;
+
+    color: var(--primary-color);
+
+    font-size: 18px;
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+.task-content p {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 15px;
+
+    line-height: 1.6;
 }
