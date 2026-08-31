@@ -1,7 +1,3 @@
-/* =========================================================
-   Quad Insight - Global Loading Page Logic (Shared)
-   IIFE Pattern لمنع تلوث الـ Global Scope
-   ========================================================= */
 (function () {
     document.addEventListener('DOMContentLoaded', function () {
         var loader = document.getElementById('global-loader');
@@ -49,10 +45,8 @@
             }, 500);
         }
 
-        // الاختفاء الفعلي مرتبط بحدث تحميل الصفحة الحقيقي وليس مؤقّت وهمي
         window.addEventListener('load', finishLoading);
 
-        // خط أمان: 5 ثواني كحد أقصى في حال بطء الشبكة
         setTimeout(finishLoading, 5000);
     });
 })();
