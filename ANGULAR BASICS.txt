@@ -1,0 +1,119 @@
+========================================
+LEVEL 3 - ANGULAR BASICS
+========================================
+
+[ ] 1. Angular Fundamentals
+    [DONE ] Angular Project Structure
+    [DONE] Components
+    [DONE] Modules
+    [DONE] Standalone Components
+    [DONE] Data Binding
+    [] Directives
+
+[ ] 2. Components
+    [DONE ] Create Components
+    [ ] @Input
+    [ ] @Output
+    [ ] Component Lifecycle
+    [ ] ngOnInit
+
+[ ] 3. Services & Dependency Injection
+    [ ] Understand Services
+    [ ] Create TaskService
+    [ ] Dependency Injection
+    [ ] Move API Logic to Service
+
+[ ] 4. Routing
+    [ ] Angular Router
+    [ ] Create Routes
+    [ ] routerLink
+    [ ] Route Parameters
+    [ ] ActivatedRoute
+
+[ ] 5. Reactive Forms
+    [ ] ReactiveFormsModule
+    [ ] FormGroup
+    [ ] FormControl
+    [ ] FormBuilder
+    [ ] formControlName
+    [ ] Create Task Form
+    [ ] Edit Task Form
+
+[ ] 6. Form Validation
+    [ ] Required
+    [ ] Min Length
+    [ ] Max Length
+    [ ] Validation Messages
+    [ ] Disable Submit if Invalid
+    [ ] Backend Validation Errors
+
+[ ] 7. HTTP Client
+    [ ] Configure HttpClient
+    [ ] GET
+    [ ] POST
+    [ ] PUT
+    [ ] DELETE
+    [ ] Connect Angular with ASP.NET Core API
+    [ ] Handle API Errors
+
+[ ] 8. Loading Indicators
+    [ ] Loading State
+    [ ] Loading on GET
+    [ ] Loading on POST
+    [ ] Loading on PUT
+    [ ] Loading on DELETE
+    [ ] Hide Loading after Response
+    [ ] Handle Loading on Error
+
+========================================
+PROJECT TASKS
+========================================
+
+[ ] Create Angular Task Management App
+
+[ ] Task List Page
+    [ ] Get Tasks from API
+    [ ] Display Tasks
+    [ ] Loading Indicator
+    [ ] Empty State
+    [ ] Error Message
+    [ ] Edit Task
+    [ ] Delete Task
+
+[ ] Create Task Form
+    [ ] Reactive Form
+    [ ] Form Validation
+    [ ] Create Task using POST
+    [ ] Loading Indicator
+    [ ] Success Handling
+    [ ] Error Handling
+
+[ ] Edit Task Form
+    [ ] Get Task by ID
+    [ ] Fill Form with Task Data
+    [ ] Form Validation
+    [ ] Update Task using PUT
+    [ ] Loading Indicator
+    [ ] Success Handling
+    [ ] Error Handling
+
+========================================
+FINAL CHECK
+========================================
+
+[ ] Components
+[ ] Modules
+[ ] Services
+[ ] Dependency Injection
+[ ] Routing
+[ ] Reactive Forms
+[ ] Validation
+[ ] HTTP Client
+[ ] API Integration
+[ ] Loading Indicators
+[ ] Error Handling
+[ ] Complete CRUD Task Management
+
+========================================
+LEVEL 3 - DONE
+========================================
