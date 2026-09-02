@@ -14,7 +14,7 @@ public class TasksController : ControllerBase
     {
         _taskService = taskService;
     }
-
+    //done
     // GET all tasks
     [HttpGet]
     public async Task<IActionResult> GetAll()
@@ -31,7 +31,7 @@ public class TasksController : ControllerBase
         else
         return Ok(tasks);
     }
-
+    //done
     // get task by id
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
@@ -46,7 +46,7 @@ public class TasksController : ControllerBase
 
         return Ok(task);
     }
-
+    //done
     // Create a new task
     [HttpPost]
     public async Task<IActionResult> Create(
@@ -63,7 +63,7 @@ public class TasksController : ControllerBase
                 message = "Task created successfully."
             });
     }
-
+    //done
     // update task by id
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(
@@ -77,7 +77,7 @@ public class TasksController : ControllerBase
             message = "Task updated successfully."
         });
     }
-
+    //done
     //delete task by id
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
@@ -89,7 +89,7 @@ public class TasksController : ControllerBase
             message = "Task deleted successfully."
         });
     }
-
+    //done
     // update task status by id
     [HttpPatch("{id:int}/status")]
     public async Task<IActionResult> UpdateStatus(
@@ -112,6 +112,7 @@ public class TasksController : ControllerBase
             });
         }
     }
+    //done
     // get tasks by user id
     [HttpGet("user/{userId:int}")]
     public async Task<IActionResult> GetByUserId(int userId)
@@ -119,16 +120,14 @@ public class TasksController : ControllerBase
         var tasks = await _taskService.GetByUserIdAsync(userId);
 
         return Ok(tasks);
+        if(_taskService == null)
+            {
+            return NotFound(new
+            {
+                message = "Tasks not found."
+            });
+        }
     }
 
-    // get subtasks by parent task id
-    [HttpGet("{parentTaskId:int}/subtasks")]
-    public async Task<IActionResult> GetSubTasks(
-        int parentTaskId)
-    {
-        var subTasks =
-            await _taskService.GetSubTasksAsync(parentTaskId);
-
-        return Ok(subTasks);
-    }
+    
 }

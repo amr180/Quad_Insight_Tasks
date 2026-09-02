@@ -38,9 +38,9 @@ public class TaskItem
 
     public TaskItem? ParentTask { get; private set; }
 
-    // Sub Tasks
-    public ICollection<TaskItem> SubTasks { get; private set; }
-        = new List<TaskItem>();
+    //// Sub Tasks
+    //public ICollection<TaskItem> SubTasks { get; private set; }
+    //    = new List<TaskItem>();
 
     // EF Core
     private TaskItem()

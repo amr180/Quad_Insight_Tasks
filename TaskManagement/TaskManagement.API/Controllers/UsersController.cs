@@ -14,7 +14,7 @@ public class UsersController : ControllerBase
     {
         _userService = userService;
     }
-
+    ////done
     //get all users
     [HttpGet]
     public async Task<IActionResult> GetAll()
@@ -23,7 +23,7 @@ public class UsersController : ControllerBase
 
         return Ok(users);
     }
-
+    //done
     // get user by id
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
@@ -38,7 +38,7 @@ public class UsersController : ControllerBase
 
         return Ok(user);
     }
-
+    //done
     // post create user
     [HttpPost]
     public async Task<IActionResult> Create(
@@ -55,7 +55,7 @@ public class UsersController : ControllerBase
                 message = "User created successfully."
             });
     }
-
+    //done
     // update user by id
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(
@@ -69,7 +69,7 @@ public class UsersController : ControllerBase
             message = "User updated successfully."
         });
     }
-
+    //done
     // delete user by id
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
