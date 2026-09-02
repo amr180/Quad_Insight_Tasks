@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المهام قيد الانتظار</title>
+    <link rel="stylesheet" href="/StylePages/quad-loader.css">
+    <link rel="stylesheet" href="/StylePages/PendingTasks.css">
+</head>
+
+<body>
+   <noscript>شغل الجافا ياااعم</noscript>
+    <div id="global-loader">
+        <div class="loader-card">
+            <div class="logo-grid">
+                <div class="square sq-1"></div>
+                <div class="square sq-2"></div>
+                <div class="square sq-3"></div>
+                <div class="square sq-4"></div>
+            </div>
+            <h1 class="brand-title">Quad <span>Insight</span></h1>
+            <p class="status-message" id="statusMessage">جاري تحميل المهام المتبقية...</p>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="percentage-indicator" id="percentageIndicator">0%</div>
+        </div>
+    </div>
+
+    <div class="app-container">
+
+        <aside>
+            <div class="sidebar-header">
+                <a href="/htmlpages/Dashboard.html"><img class="sidebar-logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo" ></a>
+                <p>نظام إدارة المهام</p>
+            </div>
+            <ul class="nav-items">
+                <li><a href="/htmlpages/Dashboard.html">لوحة التحكم</a></li>
+                <li><a href="/htmlpages/ViewUsers.html">عرض كل المستخدمين</a></li>
+                <li><a href="/htmlpages/CompletedTasks.html">المهام المكتملة</a></li>
+                <li><a href="/htmlpages/PendingTasks.html" class="active">المهام قيد الانتظار</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header class="page-header">
+                <h1>المهام قيد التنفيذ والانتظار</h1>
+            </header>
+
+            <section class="card-form">
+                <div class="card-head">
+                    <h2 >قائمة المهام قيد الانتظار</h2>
+                    <span >
+                        قيد العمل
+                    </span>
+                </div>
+
+                <div class="task-card">
+                    <div class="task-assignee">
+
+                        <div class="avatar">
+                            MA
+                        </div>
+
+                        <div class="assignee-info">
+                            <h4>محمد أحمد</h4>
+                        </div>
+
+                    </div>
+                    <div class="task-content">
+
+                        <h3>ربط بوابة الدفع الإلكتروني</h3>
+
+                        <p>
+                            مطلوب إنهاء اختبارات الأمان والتكامل للخدمات الحالية
+                        </p>
+
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <img class="quad_logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo">
+        <p>Founded in 2021, Quad Insight started with a vision to simplify and elevate veterinary operations. We launched VetICare as a desktop solution for clinics to streamline their workflows, simplify client communication, and reduce manual paperwork.</p>
+    </footer>
+
+    <script src="/Scripts/quad-loader.js"></script>
+</body>
+</html>

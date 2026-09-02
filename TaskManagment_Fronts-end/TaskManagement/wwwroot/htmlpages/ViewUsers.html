@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskManagement | عرض كافة المستخدمين</title>
+    <link rel="stylesheet" href="/StylePages/quad-loader.css">
+    <link rel="stylesheet" href="/StylePages/ViewUsers.css">
+    <link rel="stylesheet" href="/StylePages/modal.css">
+    <style>
+    
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .data-table th, .data-table td {
+            padding: 12px 16px;
+            text-align: right;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .data-table th {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            font-size: 19px;
+        }
+        .data-table td {
+            font-size: 17px;
+            color: var(--text-color);
+        }
+        .data-table tr:hover {
+            transform: translateY(-2px);
+            background-color: rgba(46, 35, 245, 0.05);
+            
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>شغل الجافا ياااعم</noscript>
+
+    <div id="global-loader">
+        <div class="loader-card">
+            <div class="logo-grid">
+                <div class="square sq-1"></div>
+                <div class="square sq-2"></div>
+                <div class="square sq-3"></div>
+                <div class="square sq-4"></div>
+            </div>
+            <h1 class="brand-title">Quad <span>Insight</span></h1>
+            <p class="status-message" id="statusMessage">جاري جلب بيانات المستخدمين...</p>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="percentage-indicator" id="percentageIndicator">0%</div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <aside>
+            <div class="sidebar-header">
+                <a href="/htmlpages/Dashboard.html"><img class="sidebar-logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo" ></a>
+                <p>نظام إدارة المهام</p>
+            </div>
+            <ul class="nav-items">
+                <li><a href="/htmlpages/Dashboard.html">لوحة التحكم</a></li>
+                <li><a href="/htmlpages/ViewUsers.html" class="active">عرض كل المستخدمين</a></li>
+                <li><a href="/htmlpages/CompletedTasks.html">المهام المكتملة</a></li>
+                <li><a href="/htmlpages/PendingTasks.html">المهام قيد الانتظار</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <header class="page-header">
+                <h1>قائمة المستخدمين والمسؤولين</h1>
+            </header>
+
+            <section class="card-form">
+                <h2 style="font-size: 20px; color: var(--primary-color); margin-bottom: 15px;">المستخدمين المسجلين في النظام</h2>
+                
+                <table class="data-table">
+                    <thead>
+                        
+                        <tr>
+                            <th>#</th>
+                            <th>اسم المستخدم</th>
+                            <th>البريد الإلكتروني</th>
+                            <th>المهام المعينة</th>
+                            <th>الحالة</th>
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td>1</td>
+                            <td>أحمد محمود</td>
+                            <td>ahmed@quadinsight.com</td>
+                            <td>4 مهام</td>
+                            <td><span style="color: #047857; font-weight: bold; ">نشط</span></td>
+                            <td><button class="btn btn-primary"
+                            onclick="openUserModal('Ahmed Mohamed', 'ahmed@email.com')"> View Tasks</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <img class="quad_logo" src="/Images/quad_insight_logo.jpeg" alt="Quad Insight Logo">
+        <p>Founded in 2021, Quad Insight started with a vision to simplify and elevate veterinary operations. We launched VetICare as a desktop solution for clinics to streamline their workflows, simplify client communication, and reduce manual paperwork.</p>
+    </footer>
+    <!-- modal view tasks of users -->
+<div class="modal-overlay" id="modalOverlay">
+
+    <div class="modal">
+
+        <button class="modal-close" id="modalClose">
+            ×
+        </button>
+
+
+        <div class="modal-header">
+
+            <h2>User Tasks</h2>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div class="user-info">
+
+                <div class="user-avatar">
+                    AM
+                </div>
+
+                <div>
+
+                    <h3 id="modalUserName">
+                        Ahmed Mohamed
+                    </h3>
+
+                    <span id="modalUserEmail">
+                        ahmed@email.com
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="tasks-title">
+                All Tasks
+            </div>
+
+
+            <div id="userTasks">
+
+                <div class="task-item">
+
+                    <h4>Fix Login Bug</h4>
+
+                    <p>
+                        Fix authentication issue.
+                    </p>
+
+                    <span class="task-status status-pending">
+                        Pending
+                    </span>
+
+                </div>
+
+
+                <div class="task-item">
+
+                    <h4>Create Dashboard</h4>
+
+                    <p>
+                        Build dashboard UI.
+                    </p>
+
+                    <span class="task-status status-completed">
+                        Completed
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="/Scripts/quad-loader.js"></script>
+    <script src="/Scripts/modal.js"></script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: opacity 0.25s ease,
+                visibility 0.25s ease;
+
+    z-index: 9999;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal {
+    position: relative;
+
+    width: min(600px, 100%);
+    max-height: 90vh;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+
+    transform: translateY(-20px) scale(0.96);
+
+    transition: transform 0.25s ease;
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f3f5;
+
+    color: #333;
+
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.2s ease;
+
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: #f30101;
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    padding: 28px 28px 18px;
+    margin-top: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    margin: 0 0 6px;
+
+    font-size: 24px;
+    color: #1f2937;
+}
+
+.modal-header p {
+    margin: 0;
+
+    color: #6b7280;
+}
+
+
+.modal-body {
+    padding: 24px;
+
+    max-height: 65vh;
+
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: 600;
+    color: #374151;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #6366f1;
+
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+
+.modal-footer {
+    padding: 18px 24px;
+
+    border-top: 1px solid #eee;
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: #4f46e5;
+    color: white;
+}
+
+.btn-secondary {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 24px;
+}
+
+.user-avatar {
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+
+    background: #eef2ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+
+    color: #4f46e5;
+}
+
+.user-info h3 {
+    margin: 0 0 4px;
+
+    color: #1f2937;
+}
+
+.user-info span {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.tasks-title {
+    margin-bottom: 12px;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.task-item {
+    padding: 15px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    margin-bottom: 10px;
+
+    background: #fafafa;
+}
+
+.task-item h4 {
+    margin: 0 0 6px;
+
+    color: #1f2937;
+}
+
+.task-item p {
+    margin: 0 0 8px;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+.task-status {
+    display: inline-block;
+
+    padding: 4px 9px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-pending {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.status-completed {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+
+@media (max-width: 600px) {
+
+    .modal {
+        width: 100%;
+        border-radius: 14px;
+    }
+
+    .modal-header {
+        padding: 24px 20px 16px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-footer {
+        padding: 16px 20px;
+    }
+}
