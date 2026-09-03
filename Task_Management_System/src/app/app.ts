@@ -1,12 +1,26 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { Loader } from './components/loader/loader';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, Loader],
   templateUrl: './app.html',
+  styleUrls: ['./app.css']
 })
-export class App {
-  protected readonly title = signal('Task_Management_System');
+export class AppComponent implements OnInit {
+  isLoading = true;
+  onLoadingComplete() {
+    this.isLoading = false; // هنا يتم إخفاء اللودر وإظهار محتوى الصفحة
+  }
+
+  ngOnInit() {
+    // محاكاة انتهاء التحميل بعد فترة (أو يمكنك التحكم بها عبر Service)
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2500); // 2.5 ثانية للتحميل
+  }
+  
 }

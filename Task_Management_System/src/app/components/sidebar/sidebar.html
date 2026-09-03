@@ -1,1 +1,14 @@
-<p>sidebar works!</p>
+<aside>
+  <div class="sidebar-header">
+    <a routerLink="/dashboard">
+        <img class="sidebar-logo" src="src/assets/images/quad_insight_logo.jpeg" alt="Quad Insight Logo">
+    </a>
+    <p>نظام إدارة المهام</p>
+  </div>
+  <ul class="nav-items">
+    <li><a routerLink="/dashboard" routerLinkActive="active">لوحة التحكم</a></li>
+    <li><a routerLink="/users" routerLinkActive="active">عرض كل المستخدمين</a></li>
+    <li><a routerLink="/completed-tasks" routerLinkActive="active">المهام المكتملة</a></li>
+    <li><a routerLink="/pending-tasks" routerLinkActive="active">المهام قيد الانتظار</a></li>
+  </ul>
+</aside>

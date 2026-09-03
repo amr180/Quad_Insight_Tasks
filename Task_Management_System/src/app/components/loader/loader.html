@@ -1,0 +1,16 @@
+<div id="global-loader">
+  <div class="loader-card">
+    <div class="logo-grid">
+      <div class="square sq-1"></div>
+      <div class="square sq-2"></div>
+      <div class="square sq-3"></div>
+      <div class="square sq-4"></div>
+    </div>
+    <h1 class="brand-title">Quad <span>Insight</span></h1>
+    <p class="status-message">{{ statusMessage }}</p>
+    <div class="progress-track">
+      <div class="progress-fill" [style.width.%]="progress"></div>
+    </div>
+    <div class="percentage-indicator">{{ progress }}%</div>
+  </div>
+</div>
