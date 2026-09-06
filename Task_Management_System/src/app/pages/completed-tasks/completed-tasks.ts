@@ -1,9 +1,25 @@
 import { Component } from '@angular/core';
 
+interface CompletedTask {
+  assigneeInitials: string;
+  assigneeName: string;
+  title: string;
+  subtasks: string[];
+}
+
 @Component({
-  imports: [],
   selector: 'app-completed-tasks',
-  styleUrl: './completed-tasks.css',
+  imports: [],
   templateUrl: './completed-tasks.html',
+  styleUrl: './completed-tasks.css'
 })
-export class CompletedTasks {}
+export class CompletedTasksComponent {
+  readonly tasks: CompletedTask[] = [
+    {
+      assigneeInitials: 'MA',
+      assigneeName: 'محمد أحمد',
+      title: 'create css pages and html pages',
+      subtasks: ['complete structure', 'complete design']
+    }
+  ];
+}

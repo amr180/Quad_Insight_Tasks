@@ -1,0 +1,40 @@
+.not-found-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 60px 25px;
+}
+
+.not-found-code {
+    font-size: 72px;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+}
+
+.not-found-message {
+    color: var(--text-muted);
+    font-size: 18px;
+    max-width: 420px;
+}
+
+.not-found-link {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.not-found-link:hover {
+    background-color: #e09216;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}

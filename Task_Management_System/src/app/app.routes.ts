@@ -1,14 +1,28 @@
 import { Routes } from '@angular/router';
-import { Dashboard} from './pages/dashboard/dashboard';
-import { ViewUsers } from './pages/view-users/view-users';
-import { CompletedTasks } from './pages/completed-tasks/completed-tasks';
-import { PendingTasks } from './pages/pending-tasks/pending-tasks';
-
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: Dashboard },
-  { path: 'users', component: ViewUsers },
-  { path: 'completed-tasks', component: CompletedTasks },
-  { path: 'pending-tasks', component: PendingTasks },
-  { path: '**', redirectTo: 'dashboard' }
+  {
+    path: '',redirectTo: 'dashboard',pathMatch: 'full'},
+  {
+    path: 'dashboard',title: 'TaskManagement System',
+    loadComponent: () =>import('./pages/dashboard/dashboard').then(m => m.DashboardComponent)
+  },
+  {
+    path: 'users',title: 'TaskManagement | عرض كافة المستخدمين',
+    loadComponent: () =>import('./pages/view-users/view-users').then(m => m.ViewUsersComponent)
+  },
+  {
+    path: 'tasks/completed',title: 'المهام المكتملة',
+    loadComponent: () =>
+      import('./pages/completed-tasks/completed-tasks').then(m => m.CompletedTasksComponent)
+  },
+  {
+    path: 'tasks/pending', title: 'المهام قيد الانتظار',
+    loadComponent: () =>import('./pages/pending-tasks/pending-tasks').then(m => m.PendingTasksComponent)
+  },
+  
+  {
+    path: '**',
+    title: '404 — الصفحة غير موجودة',
+    loadComponent: () =>import('./pages/not-found/not-found').then(m => m.NotFoundComponent)
+  }
 ];

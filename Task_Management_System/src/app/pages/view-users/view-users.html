@@ -1,1 +1,70 @@
-<p>view-users works!</p>
+<main class="main-content">
+    <header class="page-header">
+        <h1>قائمة المستخدمين والمسؤولين</h1>
+    </header>
+
+    <section class="card-form">
+        <h2 style="font-size: 20px; color: var(--primary-color); margin-bottom: 15px;">المستخدمين المسجلين في النظام</h2>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>اسم المستخدم</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>المهام المعينة</th>
+                    <th>الحالة</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (user of users; track user.email; let i = $index) {
+                    <tr>
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.tasksCount }}</td>
+                        <td><span style="color: #047857; font-weight: bold;">{{ user.status }}</span></td>
+                        <td>
+                            <button class="btn btn-primary" (click)="openUserModal('Ahmed Mohamed', 'ahmed@email.com')">View Tasks</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<!-- modal view tasks of users -->
+<div class="modal-overlay" [class.active]="isTasksModalOpen" (click)="onOverlayClick($event)">
+    <div class="modal">
+        <button class="modal-close" (click)="closeUserModal()">×</button>
+
+        <div class="modal-header">
+            <h2>User Tasks</h2>
+        </div>
+
+        <div class="modal-body">
+            <div class="user-info">
+                <div class="user-avatar">{{ modalUserInitials }}</div>
+                <div>
+                    <h3>{{ modalUserName }}</h3>
+                    <span>{{ modalUserEmail }}</span>
+                </div>
+            </div>
+
+            <div class="tasks-title">All Tasks</div>
+
+            <div>
+                @for (task of modalTasks; track task.title) {
+                    <div class="task-item">
+                        <h4>{{ task.title }}</h4>
+                        <p>{{ task.description }}</p>
+                        <span class="task-status" [class.status-pending]="task.status === 'pending'" [class.status-completed]="task.status === 'completed'">
+                            {{ task.status === 'pending' ? 'Pending' : 'Completed' }}
+                        </span>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

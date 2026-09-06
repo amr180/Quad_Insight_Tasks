@@ -1,42 +1,71 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
+interface StatusStep {
+  at: number;
+  text: string;
+}
 @Component({
   selector: 'app-loader',
-  standalone: true,
   imports: [],
   templateUrl: './loader.html',
-  styleUrls: ['./loader.css']
+  styleUrl: './loader.css'
 })
-export class Loader implements OnInit {
+export class Loader implements OnInit, OnDestroy {
+  isHidden : boolean = false;
   progress = 0;
   statusMessage = 'جاري بدء التشغيل...';
 
-  @Output() loadingComplete = new EventEmitter<void>();
+  private intervalId?: ReturnType<typeof setInterval>;
+  private finishTimeoutId?: ReturnType<typeof setTimeout>;
+  private hideTimeoutId?: ReturnType<typeof setTimeout>;
+  private finished = false;
 
-  ngOnInit() {
-    this.startProgress();
-  }
+  private readonly statusSteps: StatusStep[] = [
+    { at: 20, text: 'جاري تحميل بيانات النظام...' },
+    { at: 50, text: 'معالجة المهام...' },
+    { at: 75, text: 'تجهيز العرض...' },
+    { at: 90, text: 'اللمسات الأخيرة...' }
+  ];
 
-  startProgress() {
-    const interval = setInterval(() => {
-      if (this.progress < 100) {
-        this.progress += 1;
-        this.updateStatus(this.progress);
-      } else {
-        clearInterval(interval);
-        this.statusMessage = 'النظام جاهز';
-
-        setTimeout(() => {
-          this.loadingComplete.emit();
-        }, 400);
+  ngOnInit(): void {
+    this.intervalId = setInterval(() => {
+      if (this.progress < 90) {
+        this.progress = Math.min(90, this.progress + Math.floor(Math.random() * 4) + 1);
+        this.updateStatusMessage();
       }
-    }, 25);
+    }, 40);
+
+    window.addEventListener('load', this.finishLoading);
+    this.finishTimeoutId = setTimeout(this.finishLoading, 5000);
   }
 
-  updateStatus(val: number) {
-    if (val >= 90) this.statusMessage = 'اللمسات الأخيرة...';
-    else if (val >= 75) this.statusMessage = 'تجهيز العرض...';
-    else if (val >= 50) this.statusMessage = 'معالجة المهام...';
-    else if (val >= 20) this.statusMessage = 'جاري تحميل بيانات النظام...';
+  ngOnDestroy(): void {
+    if (this.intervalId) clearInterval(this.intervalId);
+    if (this.finishTimeoutId) clearTimeout(this.finishTimeoutId);
+    if (this.hideTimeoutId) clearTimeout(this.hideTimeoutId);
+    window.removeEventListener('load', this.finishLoading);
   }
+
+  private updateStatusMessage(): void {
+    const matchedStep = this.statusSteps.find(
+      step => step.at <= this.progress && this.progress < step.at + 25
+    );
+    if (matchedStep) {
+      this.statusMessage = matchedStep.text;
+    }
+  }
+
+  private readonly finishLoading = (): void => {
+    if (this.finished) return;
+    this.finished = true;
+
+    if (this.intervalId) clearInterval(this.intervalId);
+    if (this.finishTimeoutId) clearTimeout(this.finishTimeoutId);
+
+    this.progress = 100;
+    this.statusMessage = 'النظام جاهز';
+
+    this.hideTimeoutId = setTimeout(() => {
+      this.isHidden = true;
+    }, 500);
+  };
 }

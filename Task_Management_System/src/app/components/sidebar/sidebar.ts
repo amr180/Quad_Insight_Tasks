@@ -3,9 +3,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
-  standalone: true,
-  imports: [RouterLink, RouterLinkActive], 
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
-  styleUrls: ['./sidebar.css']
+  styleUrl: './sidebar.css'
 })
 export class Sidebar {}

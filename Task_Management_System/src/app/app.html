@@ -1,7 +1,10 @@
-@if (isLoading) {
-  <app-loader (loadingComplete)="onLoadingComplete()"></app-loader>
-} @else {
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-}
+<app-loader></app-loader>
+
+<div class="app-container">
+    <app-sidebar></app-sidebar>
+    <div class="content-wrapper">
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<app-footer></app-footer>

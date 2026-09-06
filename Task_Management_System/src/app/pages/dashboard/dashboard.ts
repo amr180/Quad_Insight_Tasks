@@ -1,38 +1,43 @@
-import { Component, HostListener } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { Sidebar } from '../../components/sidebar/sidebar';
+import { DOCUMENT } from '@angular/common';
+import { Component, HostListener, inject } from '@angular/core';
+
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [CommonModule, FormsModule, RouterModule, Sidebar],
+  imports: [],
   templateUrl: './dashboard.html',
-  styleUrls: ['./dashboard.css']
+  styleUrl: './dashboard.css'
 })
-export class Dashboard {
-  isModalOpen = false;
+export class DashboardComponent {
+  private readonly document = inject(DOCUMENT);
 
-  user = { name: '', email: '' };
-  task = { title: '', description: '', dueDate: '' };
+  isTaskModalOpen = false;
 
-  @HostListener('document:keydown.escape')
-  onEscape() {
-    this.isModalOpen = false;
+  openTaskModal(): void {
+    this.isTaskModalOpen = true;
+    this.document.body.style.overflow = 'hidden';
   }
 
-  closeModalOnOverlay(event: MouseEvent) {
-    if ((event.target as HTMLElement).classList.contains('modal-overlay')) {
-      this.isModalOpen = false;
+  closeTaskModal(): void {
+    this.isTaskModalOpen = false;
+    this.document.body.style.overflow = '';
+  }
+
+  
+  onOverlayClick(event: MouseEvent): void {
+    if (event.target === event.currentTarget) {
+      this.closeTaskModal();
     }
   }
 
-  onSaveUser() {
-    console.log('User saved:', this.user);
+  
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (this.isTaskModalOpen) {
+      this.closeTaskModal();
+    }
   }
-
-  onAddTask() {
-    console.log('Task added:', this.task);
-    this.isModalOpen = false;
+  onAddUserSubmit(form: HTMLFormElement, event: Event): void {
+    event.preventDefault();
+    form.reset();
   }
 }
