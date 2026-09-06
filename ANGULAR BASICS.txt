@@ -8,47 +8,47 @@ LEVEL 3 - ANGULAR BASICS
     [DONE] Modules
     [DONE] Standalone Components
     [DONE] Data Binding
-    [] Directives
+    [done] Directives
 
-[ ] 2. Components
+[done ] 2. Components
     [DONE ] Create Components
-    [ ] @Input
-    [ ] @Output
-    [ ] Component Lifecycle
-    [ ] ngOnInit
+    [done ] @Input
+    [done ] @Output
+    [done ] Component Lifecycle
+    [done ] ngOnInit
 
 [ ] 3. Services & Dependency Injection
-    [ ] Understand Services
-    [ ] Create TaskService
-    [ ] Dependency Injection
-    [ ] Move API Logic to Service
+    [ done] Understand Services
+    [inprogress] Create TaskService
+    [done ] Dependency Injection
+    [inprogress ] Move API Logic to Service
 
-[ ] 4. Routing
-    [ ] Angular Router
-    [ ] Create Routes
-    [ ] routerLink
-    [ ] Route Parameters
-    [ ] ActivatedRoute
+[done ] 4. Routing
+    [done ] Angular Router
+    [done ] Create Routes
+    [done ] routerLink
+    [done ] Route Parameters
+    [done ] ActivatedRoute
 
-[ ] 5. Reactive Forms
-    [ ] ReactiveFormsModule
-    [ ] FormGroup
-    [ ] FormControl
-    [ ] FormBuilder
-    [ ] formControlName
-    [ ] Create Task Form
-    [ ] Edit Task Form
+[done ] 5. Reactive Forms
+    [done ] ReactiveFormsModule
+    [done ] FormGroup
+    [done ] FormControl
+    [done ] FormBuilder
+    [done ] formControlName
+    [inprogress ] Create Task Form
+    [inprogress ] Edit Task Form
 
-[ ] 6. Form Validation
-    [ ] Required
-    [ ] Min Length
-    [ ] Max Length
-    [ ] Validation Messages
-    [ ] Disable Submit if Invalid
-    [ ] Backend Validation Errors
+[done ] 6. Form Validation
+    [ done] Required
+    [done ] Min Length
+    [done ] Max Length
+    [done ] Validation Messages
+    [done ] Disable Submit if Invalid
+    [done ] Backend Validation Errors
 
-[ ] 7. HTTP Client
-    [ ] Configure HttpClient
+[inprogress ] 7. HTTP Client
+    [inprogress ] Configure HttpClient
     [ ] GET
     [ ] POST
     [ ] PUT
@@ -69,7 +69,7 @@ LEVEL 3 - ANGULAR BASICS
 PROJECT TASKS
 ========================================
 
-[ ] Create Angular Task Management App
+[inprogress ] Create Angular Task Management App
 
 [ ] Task List Page
     [ ] Get Tasks from API
@@ -101,18 +101,18 @@ PROJECT TASKS
 FINAL CHECK
 ========================================
 
-[ ] Components
-[ ] Modules
-[ ] Services
-[ ] Dependency Injection
-[ ] Routing
-[ ] Reactive Forms
-[ ] Validation
-[ ] HTTP Client
-[ ] API Integration
-[ ] Loading Indicators
-[ ] Error Handling
-[ ] Complete CRUD Task Management
+[done ] Components
+[done ] Modules
+[done ] Services
+[done ] Dependency Injection
+[done ] Routing
+[done ] Reactive Forms
+[done ] Validation
+[inprogress ] HTTP Client
+[inprogress ] API Integration
+[done ] Loading Indicators
+[done ] Error Handling
+[done ] Complete CRUD Task Management
 
 ========================================
 LEVEL 3 - DONE
