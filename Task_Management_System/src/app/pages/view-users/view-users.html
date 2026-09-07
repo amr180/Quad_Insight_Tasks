@@ -6,35 +6,43 @@
     <section class="card-form">
         <h2>المستخدمين المسجلين في النظام</h2>
 
-        <!-- ضيفنا الـ Container ده هنا لحماية الجدول وتفعيل السكرول الأفقي -->
-        <div class="table-responsive">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>اسم المستخدم</th>
-                        <th>البريد الإلكتروني</th>
-                        <th>المهام المعينة</th>
-                        <th>الحالة</th>
-                        <th>عرض المهام</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (user of users; track user.email; let i = $index) {
+        @if (isLoading) {
+            <p>جاري تحميل المستخدمين...</p>
+        } @else if (errorMessage) {
+            <p style="color:#c0392b;">{{ errorMessage }}</p>
+        } @else {
+            <!-- ضيفنا الـ Container ده هنا لحماية الجدول وتفعيل السكرول الأفقي -->
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
                         <tr>
-                            <td>{{ i + 1 }}</td>
-                            <td>{{ user.name }}</td>
-                            <td class="email-cell">{{ user.email }}</td>
-                            <td>{{ user.tasksCount }}</td>
-                            <td><span class="status-badge">{{ user.status }}</span></td>
-                            <td>
-                                <button class="btn btn-primary" (click)="openUserModal(user.name, user.email)">View Tasks</button>
-                            </td>
+                            <th>#</th>
+                            <th>اسم المستخدم</th>
+                            <th>البريد الإلكتروني</th>
+                            <th>المهام المعينة</th>
+                            <th>عرض المهام</th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        @for (user of users; track user.id; let i = $index) {
+                            <tr>
+                                <td>{{ i + 1 }}</td>
+                                <td>{{ user.name }}</td>
+                                <td class="email-cell">{{ user.email }}</td>
+                                <td>{{ user.tasks.length }} مهام</td>
+                                <td>
+                                    <button class="btn btn-primary" (click)="openUserModal(user)">View Tasks</button>
+                                </td>
+                            </tr>
+                        } @empty {
+                            <tr>
+                                <td colspan="5">لا يوجد مستخدمين مسجلين بعد.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
     </section>
 </main>
 
@@ -59,14 +67,16 @@
             <div class="tasks-title">All Tasks</div>
 
             <div>
-                @for (task of modalTasks; track task.title) {
+                @for (task of modalTasks; track task.id) {
                     <div class="task-item">
                         <h4>{{ task.title }}</h4>
                         <p>{{ task.description }}</p>
-                        <span class="task-status" [class.status-pending]="task.status === 'pending'" [class.status-completed]="task.status === 'completed'">
-                            {{ task.status === 'pending' ? 'Pending' : 'Completed' }}
+                        <span class="task-status" [class.status-pending]="task.status === TaskStatus.Pending" [class.status-completed]="task.status === TaskStatus.Completed">
+                            {{ task.status === TaskStatus.Pending ? 'Pending' : 'Completed' }}
                         </span>
                     </div>
+                } @empty {
+                    <p>لا توجد مهام لهذا المستخدم.</p>
                 }
             </div>
         </div>

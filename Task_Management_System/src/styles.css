@@ -154,6 +154,7 @@ body {
 aside {
     width: var(--sidebar-width);
     background-color: var(--primary-dark);
+    border-radius: 12px 0% 0px 0px;
     color: #ffffff;
     display: flex;
     flex-direction: column;

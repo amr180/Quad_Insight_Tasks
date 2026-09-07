@@ -8,18 +8,25 @@
             <fieldset>
                 <legend><h2>إضافة مستخدم جديد</h2></legend>
 
+                @if (userSuccessMessage) {
+                    <div class="highlight-box">{{ userSuccessMessage }}</div>
+                }
+                @if (userErrorMessage) {
+                    <div class="highlight-box" style="color:#c0392b;">{{ userErrorMessage }}</div>
+                }
+
                 <div class="form-group">
                     <label for="userName">اسم المستخدم</label>
-                    <input type="text" id="userName" class="form-control" name="addname" placeholder="أدخل اسم المستخدم" required>
+                    <input type="text" id="userName" class="form-control" name="addname" [(ngModel)]="newUser.name" placeholder="أدخل اسم المستخدم" required>
                 </div>
 
                 <div class="form-group">
                     <label for="userEmail">البريد الإلكتروني</label>
-                    <input type="email" id="userEmail" class="form-control" name="useremail" placeholder="name@example.com" required>
+                    <input type="email" id="userEmail" class="form-control" name="useremail" [(ngModel)]="newUser.email" placeholder="name@example.com" required>
                 </div>
                 <div class="form-actions">
                     <input type="reset" id="cancel" class="btn-cancel" value="إلغاء">
-                    <input type="submit" id="save" class="btn-save" value="حفظ المستخدم">
+                    <input type="submit" id="save" class="btn-save" [value]="isSavingUser ? 'جاري الحفظ...' : 'حفظ المستخدم'" [disabled]="isSavingUser">
                 </div>
 
                 <hr style="border: none; border-top: 1px solid var(--border-color); margin: 20px 0;">
@@ -46,41 +53,35 @@
         </div>
 
         <div class="modal-body">
+            @if (taskErrorMessage) {
+                <div class="highlight-box" style="color:#c0392b;">{{ taskErrorMessage }}</div>
+            }
+
             <div class="form-group">
                 <label>Task Name</label>
-                <input type="text" id="taskName" placeholder="Enter task name" required>
+                <input type="text" id="taskName" name="taskName" [(ngModel)]="newTask.title" placeholder="Enter task name" required>
             </div>
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea id="taskDescription" rows="4" placeholder="Enter task description" required></textarea>
+                <textarea id="taskDescription" name="taskDescription" [(ngModel)]="newTask.description" rows="4" placeholder="Enter task description" required></textarea>
             </div>
 
-            <div class="form-group">
-                <!-- كدا كدا هيتسجل اتومتك -->
-                <label>Due Date</label>
-                <input type="date" id="dueDate">
-            </div>
             <div class="form-group">
                 <label>Assign To</label>
 
-                <select id="taskUser">
-
-                    <option value="">Select User</option>
-
-                    <option value="1">Ahmed Mohamed</option>
-
-                    <option value="2">Mohamed Ali</option>
-
-                    <option value="3">Omar Hassan</option>
-
+                <select id="taskUser" name="taskUser" [(ngModel)]="newTask.userId">
+                    <option [ngValue]="null">Select User</option>
+                    @for (user of users; track user.id) {
+                        <option [ngValue]="user.id">{{ user.name }}</option>
+                    }
                 </select>
             </div>
         </div>
 
         <div class="modal-footer">
             <button class="btn btn-secondary" (click)="closeTaskModal()">Cancel</button>
-            <button class="btn btn-primary" id="addTaskBtn">Add Task</button>
+            <button class="btn btn-primary" id="addTaskBtn" [disabled]="isSavingTask" (click)="onAddTaskSubmit()">{{ isSavingTask ? 'جاري الحفظ...' : 'Add Task' }}</button>
         </div>
     </div>
 </div>
