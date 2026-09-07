@@ -9,10 +9,15 @@
             <span>جاهزة ومكتملة</span>
         </div>
 
+        @if (successMessage) {
+            <p class="status-message success">{{ successMessage }}</p>
+        }
+        @if (errorMessage) {
+            <p class="status-message error">{{ errorMessage }}</p>
+        }
+
         @if (isLoading) {
             <p>جاري التحميل...</p>
-        } @else if (errorMessage) {
-            <p style="color:#c0392b;">{{ errorMessage }}</p>
         } @else {
             @for (task of tasks; track task.id) {
                 <div class="task-card">
@@ -25,6 +30,15 @@
                     <div class="task-content">
                         <h3>{{ task.title }}</h3>
                         <p>{{ task.description }}</p>
+                    </div>
+                    <div class="task-actions">
+                        <button
+                            type="button"
+                            class="btn-status btn-undo"
+                            [disabled]="updatingTaskId === task.id"
+                            (click)="returnToPending(task)">
+                            {{ updatingTaskId === task.id ? 'جاري التحديث...' : '↩ إرجاع لقيد الانتظار' }}
+                        </button>
                     </div>
                 </div>
             } @empty {

@@ -17,6 +17,10 @@ export class CompletedTasks implements OnInit {
   tasks: AppTask[] = [];
   isLoading = true;
   errorMessage = '';
+  successMessage = '';
+
+  // بنخزن id المهمة اللي بيتم تحديثها دلوقتي عشان نعطل زرارها بس هي ونمنع دوس مزدوج
+  updatingTaskId: number | null = null;
 
   ngOnInit(): void {
     this.taskService.getAll().subscribe({
@@ -27,6 +31,32 @@ export class CompletedTasks implements OnInit {
       error: () => {
         this.errorMessage = 'تعذر تحميل المهام المكتملة.';
         this.isLoading = false;
+      }
+    });
+  }
+
+  // بترجع التاسك من Completed إلى Pending، وبتشيلها من الليستة الحالية بعد النجاح
+  returnToPending(task: AppTask): void {
+    if (this.updatingTaskId !== null) {
+      return;
+    }
+
+    this.errorMessage = '';
+    this.successMessage = '';
+    this.updatingTaskId = task.id;
+
+    this.taskService.updateStatus(task.id, { status: TaskStatus.Pending }).subscribe({
+      next: () => {
+        this.tasks = this.tasks.filter((t) => t.id !== task.id);
+        this.successMessage = `تم إرجاع مهمة "${task.title}" إلى قائمة المهام قيد الانتظار.`;
+        this.updatingTaskId = null;
+
+        // اخفاء الرسالة تلقائياً بعد شوية
+        setTimeout(() => (this.successMessage = ''), 4000);
+      },
+      error: () => {
+        this.errorMessage = 'تعذر تحديث حالة المهمة، حاول مرة أخرى.';
+        this.updatingTaskId = null;
       }
     });
   }

@@ -23,6 +23,56 @@
     white-space: nowrap;
 }
 
+
+.status-message {
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.status-message.success {
+    background-color: #d1fae5;
+    color: #047857;
+}
+
+.status-message.error {
+    background-color: #fee2e2;
+    color: #c0392b;
+}
+
+.task-actions {
+    order: 3;
+    display: flex;
+    align-items: center;
+}
+
+.btn-status {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-status:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-status:not(:disabled):hover {
+    transform: translateY(-1px);
+}
+
+.btn-complete {
+    background-color: #10b981;
+    color: #ffffff;
+}
+
 /* Task Card Main Structure */
 .task-card {
     display: flex;
@@ -125,9 +175,19 @@
         order: 2;
         width: 100%;
         min-width: 0;
-        justify-content: flex-end; /* الحفاظ على اتجاه محاذاة النص العربي */
+        justify-content: flex-end; 
         padding-top: 12px;
-        border-top: 1px dashed var(--border-color); /* فاصل أنيق بين الوصف والمستخدم */
+        border-top: 1px dashed var(--border-color); 
+    }
+
+    .task-actions {
+        order: 3;
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .btn-status {
+        width: 100%;
     }
 }
 
