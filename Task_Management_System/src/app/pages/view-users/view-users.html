@@ -4,33 +4,37 @@
     </header>
 
     <section class="card-form">
-        <h2 style="font-size: 20px; color: var(--primary-color); margin-bottom: 15px;">المستخدمين المسجلين في النظام</h2>
+        <h2>المستخدمين المسجلين في النظام</h2>
 
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>اسم المستخدم</th>
-                    <th>البريد الإلكتروني</th>
-                    <th>المهام المعينة</th>
-                    <th>الحالة</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (user of users; track user.email; let i = $index) {
+        <!-- ضيفنا الـ Container ده هنا لحماية الجدول وتفعيل السكرول الأفقي -->
+        <div class="table-responsive">
+            <table class="data-table">
+                <thead>
                     <tr>
-                        <td>{{ i + 1 }}</td>
-                        <td>{{ user.name }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>{{ user.tasksCount }}</td>
-                        <td><span style="color: #047857; font-weight: bold;">{{ user.status }}</span></td>
-                        <td>
-                            <button class="btn btn-primary" (click)="openUserModal('Ahmed Mohamed', 'ahmed@email.com')">View Tasks</button>
-                        </td>
+                        <th>#</th>
+                        <th>اسم المستخدم</th>
+                        <th>البريد الإلكتروني</th>
+                        <th>المهام المعينة</th>
+                        <th>الحالة</th>
+                        <th>عرض المهام</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @for (user of users; track user.email; let i = $index) {
+                        <tr>
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ user.name }}</td>
+                            <td class="email-cell">{{ user.email }}</td>
+                            <td>{{ user.tasksCount }}</td>
+                            <td><span class="status-badge">{{ user.status }}</span></td>
+                            <td>
+                                <button class="btn btn-primary" (click)="openUserModal(user.name, user.email)">View Tasks</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </section>
 </main>
 

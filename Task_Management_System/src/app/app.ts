@@ -16,14 +16,13 @@ import { Footer } from './components/footer/footer';
 export class AppComponent implements OnInit {
   isLoading = true;
   onLoadingComplete() {
-    this.isLoading = false; // هنا يتم إخفاء اللودر وإظهار محتوى الصفحة
+    this.isLoading = false; 
   }
 
   ngOnInit() {
-    // محاكاة انتهاء التحميل بعد فترة (أو يمكنك التحكم بها عبر Service)
     setTimeout(() => {
       this.isLoading = false;
-    }, 2500); // 2.5 ثانية للتحميل
+    }, 3000); // 3 ثانية للتحميل
   }
   
 }

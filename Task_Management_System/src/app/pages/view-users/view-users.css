@@ -1,34 +1,83 @@
-.users-table-container {
+/* Card Form Wrapper */
+.card-form {
     background: var(--card-bg);
     border-radius: 12px;
-    padding: 20px;
+    padding: 25px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    width: 100%;
+    overflow: hidden; /* يمنع أي عنصر بداخل الكارت إنه يخرج بره حدوده */
 }
 
-.data-table {
+/* Responsive Table Wrapper (السر في معالجة خروج الجدول) */
+.table-responsive {
     width: 100%;
-    border-collapse: collapse;
+    overflow-x: auto; /* يظهر السكرول فقط للجدول لو الشاشة صغرت */
+    -webkit-overflow-scrolling: touch;
     margin-top: 15px;
 }
 
-.data-table th, .data-table td {
+/* Data Table */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    direction: rtl;
+    min-width: 650px; /* يضمن إن خلايا الجدول متتضغطش بشكل يشرشر الكلام */
+}
+
+.data-table th, 
+.data-table td {
     padding: 12px 16px;
     text-align: right;
     border-bottom: 1px solid var(--border-color);
+    white-space: nowrap; /* إبقاء العناوين متناسقة */
 }
 
 .data-table th {
     background-color: var(--bg-color);
     color: var(--primary-color);
-    font-size: 19px;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .data-table td {
-    font-size: 17px;
+    font-size: 15px;
     color: var(--text-color);
 }
 
-.data-table tr:hover {
-    transform: translateY(-2px);
-    background-color: rgba(46, 35, 245, 0.05);
+.data-table td.email-cell {
+    direction: ltr;
+    text-align: right;
+}
+
+/* Status Badge inside Table (إصلاح مشكلة الـ float) */
+.status-badge {
+    background-color: #d1fae5;
+    color: #047857;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    display: inline-block; /* بديل أنضف للـ float عشان ميضربش الجدول */
+}
+
+.data-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background-color: rgba(46, 35, 245, 0.04);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .card-form {
+        padding: 15px;
+    }
+
+    .data-table th, 
+    .data-table td {
+        padding: 10px 8px;
+        font-size: 14px;
+    }
 }

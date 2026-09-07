@@ -20,7 +20,7 @@ interface UserTask {
   templateUrl: './view-users.html',
   styleUrl: './view-users.css'
 })
-export class ViewUsersComponent {
+export class ViewUsers {
   private readonly document = inject(DOCUMENT);
 
   readonly users: AppUser[] = [

@@ -1,23 +1,29 @@
+/* Not Found / 404 Section Structure */
 .not-found-card {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 12px;
     padding: 60px 25px;
+    width: 100%;
 }
 
 .not-found-code {
-    font-size: 72px;
+    font-size: clamp(48px, 12vw, 72px); /* يتدرج بمرونة حسب حجم الشاشة من 48px لـ 72px */
     font-weight: 800;
     color: var(--primary-color);
     letter-spacing: 2px;
+    line-height: 1;
 }
 
 .not-found-message {
     color: var(--text-muted);
     font-size: 18px;
     max-width: 420px;
+    width: 100%;
+    line-height: 1.5;
 }
 
 .not-found-link {
@@ -26,15 +32,38 @@
     background-color: var(--accent-color);
     color: #ffffff;
     text-decoration: none;
-    padding: 10px 24px;
-    border-radius: 6px;
+    padding: 12px 28px; /* زيادة بسيطة لتسهيل الضغط */
+    border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
-    transition: 0.2s;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .not-found-link:hover {
     background-color: #e09216;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.not-found-link:active {
+    transform: translateY(0);
+}
+
+/* Mobile & Small Screens (<= 480px) */
+@media (max-width: 480px) {
+    .not-found-card {
+        padding: 40px 15px;
+        gap: 10px;
+    }
+
+    .not-found-message {
+        font-size: 15px;
+    }
+
+    .not-found-link {
+        width: 100%; /* تحويل الزرار ليكون بعرض الشاشة لمظهر أسهل في التفاعل */
+        max-width: 280px;
+        text-align: center;
+        padding: 14px 20px;
+    }
 }

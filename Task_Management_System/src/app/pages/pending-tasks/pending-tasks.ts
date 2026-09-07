@@ -13,7 +13,7 @@ interface PendingTask {
   templateUrl: './pending-tasks.html',
   styleUrl: './pending-tasks.css'
 })
-export class PendingTasksComponent {
+export class PendingTasks {
   readonly tasks: PendingTask[] = [
     {
       assigneeInitials: 'MA',

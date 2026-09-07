@@ -48,18 +48,33 @@
         <div class="modal-body">
             <div class="form-group">
                 <label>Task Name</label>
-                <input type="text" id="taskName" placeholder="Enter task name">
+                <input type="text" id="taskName" placeholder="Enter task name" required>
             </div>
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea id="taskDescription" rows="4" placeholder="Enter task description"></textarea>
+                <textarea id="taskDescription" rows="4" placeholder="Enter task description" required></textarea>
             </div>
 
             <div class="form-group">
                 <!-- كدا كدا هيتسجل اتومتك -->
                 <label>Due Date</label>
                 <input type="date" id="dueDate">
+            </div>
+            <div class="form-group">
+                <label>Assign To</label>
+
+                <select id="taskUser">
+
+                    <option value="">Select User</option>
+
+                    <option value="1">Ahmed Mohamed</option>
+
+                    <option value="2">Mohamed Ali</option>
+
+                    <option value="3">Omar Hassan</option>
+
+                </select>
             </div>
         </div>
 

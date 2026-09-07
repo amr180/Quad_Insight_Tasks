@@ -13,7 +13,7 @@ interface CompletedTask {
   templateUrl: './completed-tasks.html',
   styleUrl: './completed-tasks.css'
 })
-export class CompletedTasksComponent {
+export class CompletedTasks {
   readonly tasks: CompletedTask[] = [
     {
       assigneeInitials: 'MA',

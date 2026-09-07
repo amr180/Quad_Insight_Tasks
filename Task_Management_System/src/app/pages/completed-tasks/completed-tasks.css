@@ -1,3 +1,4 @@
+/* Card Form Badge Fix */
 .card-form span {
     background-color: #d1fae5;
     color: #047857;
@@ -5,10 +6,11 @@
     border-radius: 20px;
     font-size: 13px;
     font-weight: bold;
-    float: left;
-    margin: 15px;
+    display: inline-block; /* بديل أنضف وأفضل من float: left */
+    margin: 10px 0;
 }
 
+/* Task Card Structure */
 .task-card {
     display: flex;
     align-items: center;
@@ -22,15 +24,13 @@
     border-radius: 10px;
     margin-bottom: 15px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    gap: 15px;
 }
 
 .task-card:hover {
     transform: translateY(-2px);
-    box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .task-assignee {
@@ -38,13 +38,13 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    min-width: 220px;
+    min-width: 200px;
     direction: ltr;
 }
 
 .avatar {
-    width: 60px;
-    height: 60px;
+    width: 50px; /* تصغير طفيف ليناسب كل الشاشات */
+    height: 50px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -52,7 +52,7 @@
     background: #dff7ed;
     color: #0f9f6e;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 700;
 }
 
@@ -73,18 +73,17 @@
     order: 1;
     flex: 1;
     min-width: 0;
-    margin-right: 20px;
     text-align: right;
     direction: rtl;
 }
 
 /* mainTask */
 .task-content h3 {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     color: var(--primary-color);
     font-size: 18px;
     font-weight: 700;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 /* subtasks */
@@ -97,6 +96,47 @@
 .subtasks p {
     margin: 0;
     color: var(--text-muted);
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.5;
+}
+
+
+/* Tablets & Small Screens (<= 768px) */
+@media (max-width: 768px) {
+    .task-card {
+        flex-direction: column; /* تحويل card navbar على الموبايل */
+        align-items: flex-start;
+        padding: 16px;
+    }
+
+    .task-content {
+        order: 1;
+        width: 100%;
+    }
+
+    .task-assignee {
+        order: 2;
+        width: 100%;
+        min-width: 0;
+        justify-content: flex-end; /* المحافظة على اتجاه الـ RTL */
+        padding-top: 12px;
+        border-top: 1px dashed var(--border-color); /* فاصل خفيف بين المحتوى والشخص المسؤول */
+    }
+}
+
+/* Mobile Screens (<= 480px) */
+@media (max-width: 480px) {
+    .task-content h3 {
+        font-size: 16px;
+    }
+
+    .avatar {
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+    }
+
+    .assignee-info h4 {
+        font-size: 14px;
+    }
 }

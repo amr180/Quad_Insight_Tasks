@@ -7,7 +7,7 @@ import { Component, HostListener, inject } from '@angular/core';
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
-export class DashboardComponent {
+export class Dashboard {
   private readonly document = inject(DOCUMENT);
 
   isTaskModalOpen = false;
