@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TaskManagement.Application.Interfaces;
 using TaskManagement.Domain.Entities;
 using TaskManagement.Infrastructure.Data;
@@ -18,7 +18,6 @@ public class TaskRepository : ITaskRepository
     {
         return await _context.TaskItems
             .Include(t => t.User)
-            .Include(t => t.SubTasks)
             .FirstOrDefaultAsync(t => t.Id == id);
     }
 
@@ -26,7 +25,6 @@ public class TaskRepository : ITaskRepository
     {
         return await _context.TaskItems
             .Include(t => t.User)
-            .Include(t => t.SubTasks)
             .AsNoTracking()
             .ToListAsync();
     }
@@ -35,15 +33,7 @@ public class TaskRepository : ITaskRepository
     {
         return await _context.TaskItems
             .Where(t => t.UserId == userId)
-            .Include(t => t.SubTasks)
-            .AsNoTracking()
-            .ToListAsync();
-    }
-
-    public async Task<IEnumerable<TaskItem>> GetSubTasksAsync(int parentTaskId)
-    {
-        return await _context.TaskItems
-            .Where(t => t.ParentTaskId == parentTaskId)
+            .Include(t => t.User)
             .AsNoTracking()
             .ToListAsync();
     }

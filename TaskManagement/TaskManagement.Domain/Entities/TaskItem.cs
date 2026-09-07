@@ -34,15 +34,6 @@ public class TaskItem
 
     public User? User { get; private set; }
 
-    // Parent Task Relationship
-    public int? ParentTaskId { get; private set; }
-
-    public TaskItem? ParentTask { get; private set; }
-
-    // Sub Tasks
-    public ICollection<TaskItem> SubTasks { get; private set; }
-        = new List<TaskItem>();
-
     // EF Core
     private TaskItem()
     {
@@ -51,14 +42,12 @@ public class TaskItem
     public TaskItem(
         string title,
         string? description = null,
-        int? userId = null,
-        int? parentTaskId = null)
+        int? userId = null)
     {
         SetTitle(title);
         SetDescription(description);
 
         UserId = userId;
-        ParentTaskId = parentTaskId;
 
         Status =
             TaskManagement.Domain.Enums.TaskStatus.Pending;

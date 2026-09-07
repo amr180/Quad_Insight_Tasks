@@ -31,11 +31,5 @@ public class TaskItemConfiguration : IEntityTypeConfiguration<TaskItem>
             .WithMany(u => u.Tasks)
             .HasForeignKey(t => t.UserId)
             .OnDelete(DeleteBehavior.SetNull);
-
-        // Parent Task -> SubTasks
-        builder.HasOne(t => t.ParentTask)
-            .WithMany(t => t.SubTasks)
-            .HasForeignKey(t => t.ParentTaskId)
-            .OnDelete(DeleteBehavior.Restrict);
     }
 }

@@ -22,7 +22,4 @@ public interface ITaskService
 
     Task<IEnumerable<object>> GetByUserIdAsync(
         int userId);
-
-    Task<IEnumerable<object>> GetSubTasksAsync(
-        int parentTaskId);
 }

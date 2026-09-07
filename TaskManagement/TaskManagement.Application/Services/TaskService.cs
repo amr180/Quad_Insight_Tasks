@@ -1,4 +1,4 @@
-﻿using TaskManagement.Application.DTOs.Tasks;
+using TaskManagement.Application.DTOs.Tasks;
 using TaskManagement.Application.Interfaces;
 using TaskManagement.Domain.Entities;
 using DomainTaskStatus = TaskManagement.Domain.Enums.TaskStatus;
@@ -40,22 +40,10 @@ public class TaskService : ITaskService
                 throw new KeyNotFoundException("User not found.");
         }
 
-        // Check Parent Task
-        if (dto.ParentTaskId.HasValue)
-        {
-            var parentExists =
-                await _taskRepository.ExistsAsync(dto.ParentTaskId.Value);
-
-            if (!parentExists)
-                throw new KeyNotFoundException(
-                    "Parent task not found.");
-        }
-
         var task = new TaskItem(
             dto.Title,
             dto.Description,
-            dto.UserId,
-            dto.ParentTaskId);
+            dto.UserId);
 
         await _taskRepository.AddAsync(task);
 
@@ -140,15 +128,6 @@ public class TaskService : ITaskService
             throw new KeyNotFoundException(
                 "Task not found.");
 
-        var subTasks =
-            await _taskRepository.GetSubTasksAsync(id);
-
-        if (subTasks.Any())
-        {
-            throw new InvalidOperationException(
-                "Cannot delete a task that has sub tasks.");
-        }
-
         _taskRepository.Delete(task);
 
         await _unitOfWork.SaveChangesAsync();
@@ -214,26 +193,6 @@ public class TaskService : ITaskService
     }
 
     // =========================
-    // Get Sub Tasks
-    // =========================
-
-    public async Task<IEnumerable<object>> GetSubTasksAsync(
-        int parentTaskId)
-    {
-        var parentExists =
-            await _taskRepository.ExistsAsync(parentTaskId);
-
-        if (!parentExists)
-            throw new KeyNotFoundException(
-                "Parent task not found.");
-
-        var subTasks =
-            await _taskRepository.GetSubTasksAsync(parentTaskId);
-
-        return subTasks.Select(MapTask);
-    }
-
-    // =========================
     // Mapping
     // =========================
 
@@ -254,20 +213,7 @@ public class TaskService : ITaskService
                     task.User.Id,
                     task.User.Name,
                     task.User.Email
-                },
-
-            ParentTaskId = task.ParentTaskId,
-
-            SubTasks = task.SubTasks.Select(subTask => new
-            {
-                subTask.Id,
-                subTask.Title,
-                subTask.Description,
-                subTask.Status,
-                subTask.UserId,
-                subTask.ParentTaskId,
-                subTask.CreatedAt
-            })
+                }
         };
     }
 }

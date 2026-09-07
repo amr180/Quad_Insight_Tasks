@@ -120,15 +120,4 @@ public class TasksController : ControllerBase
 
         return Ok(tasks);
     }
-
-    // get subtasks by parent task id
-    [HttpGet("{parentTaskId:int}/subtasks")]
-    public async Task<IActionResult> GetSubTasks(
-        int parentTaskId)
-    {
-        var subTasks =
-            await _taskService.GetSubTasksAsync(parentTaskId);
-
-        return Ok(subTasks);
-    }
 }

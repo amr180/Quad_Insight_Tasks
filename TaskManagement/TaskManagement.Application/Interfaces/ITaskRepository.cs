@@ -10,8 +10,6 @@ public interface ITaskRepository
 
     Task<IEnumerable<TaskItem>> GetByUserIdAsync(int userId);
 
-    Task<IEnumerable<TaskItem>> GetSubTasksAsync(int parentTaskId);
-
     Task AddAsync(TaskItem task);
 
     void Update(TaskItem task);
