@@ -377,6 +377,7 @@ footer p {
 
 .modal-footer {
     padding: 16px 24px;
+    margin-bottom: 5px;
     border-top: 1px solid #eee;
     display: flex;
     justify-content: flex-end;
