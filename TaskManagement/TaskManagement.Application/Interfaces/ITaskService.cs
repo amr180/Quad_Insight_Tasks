@@ -1,25 +1,25 @@
-﻿using TaskManagement.Application.DTOs.Tasks;
+﻿//using TaskManagement.Application.DTOs.Tasks;
 
-namespace TaskManagement.Application.Interfaces;
+//namespace TaskManagement.Application.Interfaces;
 
-public interface ITaskService
-{
-    Task<int> CreateAsync(CreateTaskDto dto);
+//public interface ITaskService
+//{
+//    Task<int> CreateAsync(CreateTaskDto dto);
 
-    Task<IEnumerable<object>> GetAllAsync();
+//    Task<IEnumerable<object>> GetAllAsync();
 
-    Task<object?> GetByIdAsync(int id);
+//    Task<object?> GetByIdAsync(int id);
 
-    Task UpdateAsync(
-        int id,
-        UpdateTaskDto dto);
+//    Task UpdateAsync(
+//        int id,
+//        UpdateTaskDto dto);
 
-    Task DeleteAsync(int id);
+//    Task DeleteAsync(int id);
 
-    Task UpdateStatusAsync(
-        int id,
-        UpdateTaskStatusDto dto);
+//    Task UpdateStatusAsync(
+//        int id,
+//        UpdateTaskStatusDto dto);
 
-    Task<IEnumerable<object>> GetByUserIdAsync(
-        int userId);
-}
+//    Task<IEnumerable<object>> GetByUserIdAsync(
+//        int userId);
+//}
