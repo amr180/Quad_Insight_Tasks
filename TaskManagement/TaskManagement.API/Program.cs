@@ -1,12 +1,22 @@
+using FluentValidation;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using TaskManagement.API.Middleware;
+using TaskManagement.Application.Common.Behaviors;
 using TaskManagement.Application.Interfaces;
 using TaskManagement.Application.Services;
+using TaskManagement.Application.Tasks.Commands.CreateTask;
 using TaskManagement.Infrastructure.Data;
 using TaskManagement.Infrastructure.Repositories;
-using TaskManagement.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddMediatR
+    (cfg =>cfg.RegisterServicesFromAssembly(typeof(CreateTaskCommandHandler).Assembly));
+//FluentValidation
+builder.Services.AddValidatorsFromAssembly(typeof(CreateTaskCommand).Assembly);
+// Pipeline Behavior 
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 // Controllers
 builder.Services.AddControllers();
@@ -66,5 +76,6 @@ app.UseCors("AllowAngularApp");
 
 app.UseAuthorization();
 app.MapControllers();
+
 
 app.Run();

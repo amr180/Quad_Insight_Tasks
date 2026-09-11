@@ -1,6 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
-
+using FluentValidation;
 namespace TaskManagement.API.Middleware;
 
 public class GlobalExceptionMiddleware
@@ -8,9 +8,7 @@ public class GlobalExceptionMiddleware
     private readonly RequestDelegate _next;
     private readonly ILogger<GlobalExceptionMiddleware> _logger;
 
-    public GlobalExceptionMiddleware(
-        RequestDelegate next,
-        ILogger<GlobalExceptionMiddleware> logger)
+    public GlobalExceptionMiddleware(RequestDelegate next,ILogger<GlobalExceptionMiddleware> logger)
     {
         _next = next;
         _logger = logger;
@@ -24,56 +22,57 @@ public class GlobalExceptionMiddleware
         }
         catch (KeyNotFoundException ex)
         {
-            await HandleExceptionAsync(
-                context,
-                HttpStatusCode.NotFound,
-                ex.Message);
+            await HandleExceptionAsync(context,HttpStatusCode.NotFound,ex.Message);
         }
         catch (ArgumentException ex)
         {
-            await HandleExceptionAsync(
-                context,
-                HttpStatusCode.BadRequest,
-                ex.Message);
+            await HandleExceptionAsync(context,
+                HttpStatusCode.BadRequest,ex.Message);
         }
         catch (InvalidOperationException ex)
         {
-            await HandleExceptionAsync(
-                context,
-                HttpStatusCode.BadRequest,
-                ex.Message);
+            await HandleExceptionAsync(context,
+                HttpStatusCode.BadRequest,ex.Message);
+        }
+        catch (ValidationException ex)
+        {
+            await HandleValidationExceptionAsync(context, ex);
         }
         catch (Exception ex)
         {
             _logger.LogError(
-                ex,
-                "An unexpected error occurred.");
+                ex,"An unexpected error occurred.");
 
             await HandleExceptionAsync(
-                context,
-                HttpStatusCode.InternalServerError,
-                "An unexpected error occurred.");
+                context,HttpStatusCode.InternalServerError,"An unexpected error occurred.");
         }
+    
     }
 
-    private static async Task HandleExceptionAsync(
-        HttpContext context,
-        HttpStatusCode statusCode,
-        string message)
+    private static async Task HandleExceptionAsync(HttpContext context,HttpStatusCode statusCode,string message)
     {
-        context.Response.ContentType =
-            "application/json";
+        context.Response.ContentType ="application/json";
 
-        context.Response.StatusCode =
-            (int)statusCode;
+        context.Response.StatusCode = (int)statusCode;
 
         var response = new
         {
-            statusCode = (int)statusCode,
-            message
+            statusCode = (int)statusCode, message
         };
 
-        await context.Response.WriteAsync(
-            JsonSerializer.Serialize(response));
+        await context.Response.WriteAsync(JsonSerializer.Serialize(response));
+    }
+    private static async Task HandleValidationExceptionAsync(HttpContext context,ValidationException ex)
+    {
+        context.Response.ContentType = "application/json";
+        context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+
+        var response = new
+        {
+            statusCode = (int)HttpStatusCode.BadRequest,message = "One or more validation errors occurred.",
+            errors = ex.Errors.GroupBy(e => e.PropertyName).ToDictionary(g => g.Key, g => g.Select(e => e.ErrorMessage).ToArray())
+        };
+
+        await context.Response.WriteAsync(JsonSerializer.Serialize(response));
     }
 }
