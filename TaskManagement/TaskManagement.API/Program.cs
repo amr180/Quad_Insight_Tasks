@@ -1,22 +1,17 @@
-using FluentValidation;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+
 using TaskManagement.API.Middleware;
-using TaskManagement.Application.Common.Behaviors;
-using TaskManagement.Application.Interfaces;
-using TaskManagement.Application.Services;
-using TaskManagement.Application.Tasks.Commands.CreateTask;
-using TaskManagement.Infrastructure.Data;
-using TaskManagement.Infrastructure.Repositories;
+using TaskManagement.Application;
+using TaskManagement.Infrastructure;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddMediatR
-    (cfg =>cfg.RegisterServicesFromAssembly(typeof(CreateTaskCommandHandler).Assembly));
-//FluentValidation
-builder.Services.AddValidatorsFromAssembly(typeof(CreateTaskCommand).Assembly);
-// Pipeline Behavior 
-builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+// بقي دول في Application (Services, MediatR, FluentValidation, Pipeline Behaviors)
+builder.Services.AddApplicationServices();
+
+// بقو في Infrastructure (DbContext, Repositories, UnitOfWork)
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 // Controllers
 builder.Services.AddControllers();
@@ -39,24 +34,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Database
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")));
-// Repositories
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<ITaskRepository, TaskRepository>();
-// Unit Of Work
-
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-
-// Services
-
-
-builder.Services.AddScoped<IUserService, UserService>();
-//builder.Services.AddScoped<ITaskService, TaskService>();
 var app = builder.Build();
 
 // HTTP Request Pipeline
@@ -79,3 +57,30 @@ app.MapControllers();
 
 
 app.Run();
+
+
+// Database
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));=> moved to Infrastructure project in DependencyInjection.cs
+
+// Repositories
+//builder.Services.AddScoped<IUserRepository, UserRepository>();=> moved to Infrastructure project in DependencyInjection.cs
+//builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+
+// Unit Of Work
+//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();=> moved to Infrastructure project in DependencyInjection.cs
+
+
+// Services
+
+
+//builder.Services.AddScoped<IUserService, UserService>(); ==> moved to Application project in DependencyInjection.cs
+//builder.Services.AddScoped<ITaskService, TaskService>();=>changed to use MediatR instead of service layer, so no need for this service anymore
+
+//builder.Services.AddMediatR
+//    (cfg =>cfg.RegisterServicesFromAssembly(typeof(CreateTaskCommandHandler).Assembly));=> moved to Application project in DependencyInjection.cs
+
+//FluentValidation
+//builder.Services.AddValidatorsFromAssembly(typeof(CreateTaskCommand).Assembly);=> moved to Application project in DependencyInjection.cs
+// Pipeline Behavior 
+//builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));=> moved to Application project in DependencyInjection.cs
