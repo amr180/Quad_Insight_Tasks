@@ -1,26 +1,40 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using TaskManagement.Application.DTOs.Tasks;
-using TaskManagement.Application.Interfaces;
-
+//using TaskManagement.Application.Interfaces;
+using TaskManagement.Application.Tasks.Commands.CreateTask;
+using TaskManagement.Application.Tasks.Commands.DeleteTask;
+using TaskManagement.Application.Tasks.Commands.UpdateTask;
+using TaskManagement.Application.Tasks.Commands.UpdateTaskStatus;
+using TaskManagement.Application.Tasks.Queries.GetAllTasks;
+using TaskManagement.Application.Tasks.Queries.GetTaskById;
+using TaskManagement.Application.Tasks.Queries.GetTasksByUserId;
 namespace TaskManagement.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+//public class TasksController : ControllerBase
+//{
+//    private readonly ITaskService _taskService;
+
+//    public TasksController(ITaskService taskService)
+//    {
+//        _taskService = taskService;
+//    }
 public class TasksController : ControllerBase
 {
-    private readonly ITaskService _taskService;
+    private readonly IMediator _mediator;
 
-    public TasksController(ITaskService taskService)
+    public TasksController(IMediator mediator)
     {
-        _taskService = taskService;
+        _mediator = mediator;
     }
-
     // GET all tasks
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
- 
-        var tasks = await _taskService.GetAllAsync();
+        var tasks = await _mediator.Send(new GetAllTasksQuery());
+
         if (tasks == null)
         {
             return NotFound(new
@@ -28,7 +42,7 @@ public class TasksController : ControllerBase
                 message = "No tasks found."
             });
         }
-        else
+
         return Ok(tasks);
     }
 
@@ -36,7 +50,7 @@ public class TasksController : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var task = await _taskService.GetByIdAsync(id);
+        var task = await _mediator.Send(new GetTaskByIdQuery(id));
 
         if (task is null)
             return NotFound(new
@@ -52,7 +66,8 @@ public class TasksController : ControllerBase
     public async Task<IActionResult> Create(
         [FromBody] CreateTaskDto dto)
     {
-        var id = await _taskService.CreateAsync(dto);
+        var id = await _mediator.Send(
+            new CreateTaskCommand(dto.Title, dto.Description, dto.UserId));
 
         return CreatedAtAction(
             nameof(GetById),
@@ -70,7 +85,8 @@ public class TasksController : ControllerBase
         int id,
         [FromBody] UpdateTaskDto dto)
     {
-        await _taskService.UpdateAsync(id, dto);
+        await _mediator.Send(
+            new UpdateTaskCommand(id, dto.Title, dto.Description, dto.UserId));
 
         return Ok(new
         {
@@ -82,7 +98,7 @@ public class TasksController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _taskService.DeleteAsync(id);
+        await _mediator.Send(new DeleteTaskCommand(id));
 
         return Ok(new
         {
@@ -96,27 +112,19 @@ public class TasksController : ControllerBase
         int id,
         [FromBody] UpdateTaskStatusDto dto)
     {
-        await _taskService.UpdateStatusAsync(id, dto);
-        if (_taskService == null)
+        await _mediator.Send(new UpdateTaskStatusCommand(id, dto.Status));
+
+        return Ok(new
         {
-            return NotFound(new
-            {
-                message = "Task not found."
-            });
-        }
-        else
-        {
-            return Ok(new
-            {
-                message = "Task status updated successfully."
-            });
-        }
+            message = "Task status updated successfully."
+        });
     }
+
     // get tasks by user id
     [HttpGet("user/{userId:int}")]
     public async Task<IActionResult> GetByUserId(int userId)
     {
-        var tasks = await _taskService.GetByUserIdAsync(userId);
+        var tasks = await _mediator.Send(new GetTasksByUserIdQuery(userId));
 
         return Ok(tasks);
     }

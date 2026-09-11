@@ -56,7 +56,7 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<ITaskService, TaskService>();
+//builder.Services.AddScoped<ITaskService, TaskService>();
 var app = builder.Build();
 
 // HTTP Request Pipeline
