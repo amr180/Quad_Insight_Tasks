@@ -1,219 +1,208 @@
-using TaskManagement.Application.DTOs.Tasks;
-using TaskManagement.Application.Interfaces;
-using TaskManagement.Domain.Entities;
-using DomainTaskStatus = TaskManagement.Domain.Enums.TaskStatus;
+//using TaskManagement.Application.DTOs.Tasks;
+//using TaskManagement.Application.Interfaces;
+//using TaskManagement.Domain.Entities;
+//using DomainTaskStatus = TaskManagement.Domain.Enums.TaskStatus;
+//namespace TaskManagement.Application.Services;
 
-namespace TaskManagement.Application.Services;
+//public class TaskService : ITaskService
+//{
+//    private readonly ITaskRepository _taskRepository;
+//    private readonly IUserRepository _userRepository;
+//    private readonly IUnitOfWork _unitOfWork;
 
-public class TaskService : ITaskService
-{
-    private readonly ITaskRepository _taskRepository;
-    private readonly IUserRepository _userRepository;
-    private readonly IUnitOfWork _unitOfWork;
+//    public TaskService(
+//        ITaskRepository taskRepository,
+//        IUserRepository userRepository,
+//        IUnitOfWork unitOfWork)
+//    {
+//        _taskRepository = taskRepository;
+//        _userRepository = userRepository;
+//        _unitOfWork = unitOfWork;
+//    }
+//    // Create Task
 
-    public TaskService(
-        ITaskRepository taskRepository,
-        IUserRepository userRepository,
-        IUnitOfWork unitOfWork)
-    {
-        _taskRepository = taskRepository;
-        _userRepository = userRepository;
-        _unitOfWork = unitOfWork;
-    }
+//    public async Task<int> CreateAsync(CreateTaskDto dto)
+//    {
+//        if (string.IsNullOrWhiteSpace(dto.Title))
+//            throw new ArgumentException("Task title is required.");
 
-    // =========================
-    // Create Task
-    // =========================
+//        // Check User
+//        if (dto.UserId.HasValue)
+//        {
+//            var userExists =
+//                await _userRepository.ExistsAsync(dto.UserId.Value);
 
-    public async Task<int> CreateAsync(CreateTaskDto dto)
-    {
-        if (string.IsNullOrWhiteSpace(dto.Title))
-            throw new ArgumentException("Task title is required.");
+//            if (!userExists)
+//                throw new KeyNotFoundException("User not found.");
+//        }
 
-        // Check User
-        if (dto.UserId.HasValue)
-        {
-            var userExists =
-                await _userRepository.ExistsAsync(dto.UserId.Value);
+//        var task = new TaskItem(
+//            dto.Title,
+//            dto.Description,
+//            dto.UserId);
 
-            if (!userExists)
-                throw new KeyNotFoundException("User not found.");
-        }
+//        await _taskRepository.AddAsync(task);
 
-        var task = new TaskItem(
-            dto.Title,
-            dto.Description,
-            dto.UserId);
+//        await _unitOfWork.SaveChangesAsync();
 
-        await _taskRepository.AddAsync(task);
+//        return task.Id;
+//    }
 
-        await _unitOfWork.SaveChangesAsync();
+//    // Get All Tasks
 
-        return task.Id;
-    }
 
-    // =========================
-    // Get All Tasks
-    // =========================
+//    public async Task<IEnumerable<object>> GetAllAsync()
+//    {
+//        var tasks = await _taskRepository.GetAllAsync();
 
-    public async Task<IEnumerable<object>> GetAllAsync()
-    {
-        var tasks = await _taskRepository.GetAllAsync();
+//        return tasks.Select(MapTask);
+//    }
+//    // Get Task By Id
 
-        return tasks.Select(MapTask);
-    }
+//    public async Task<object?> GetByIdAsync(int id)
+//    {
+//        var task = await _taskRepository.GetByIdAsync(id);
 
-    // =========================
-    // Get Task By Id
-    // =========================
+//        if (task is null)
+//            return null;
 
-    public async Task<object?> GetByIdAsync(int id)
-    {
-        var task = await _taskRepository.GetByIdAsync(id);
+//        return MapTask(task);
+//    }
 
-        if (task is null)
-            return null;
+//    // Update Task
 
-        return MapTask(task);
-    }
 
-    // =========================
-    // Update Task
-    // =========================
+//    public async Task UpdateAsync(
+//        int id,
+//        UpdateTaskDto dto)
+//    {
+//        if (string.IsNullOrWhiteSpace(dto.Title))
+//            throw new ArgumentException(
+//                "Task title is required.");
 
-    public async Task UpdateAsync(
-        int id,
-        UpdateTaskDto dto)
-    {
-        if (string.IsNullOrWhiteSpace(dto.Title))
-            throw new ArgumentException(
-                "Task title is required.");
+//        var task = await _taskRepository.GetByIdAsync(id);
 
-        var task = await _taskRepository.GetByIdAsync(id);
+//        if (task is null)
+//            throw new KeyNotFoundException(
+//                "Task not found.");
 
-        if (task is null)
-            throw new KeyNotFoundException(
-                "Task not found.");
+//        // Check User
+//        if (dto.UserId.HasValue)
+//        {
+//            var userExists =
+//                await _userRepository.ExistsAsync(dto.UserId.Value);
 
-        // Check User
-        if (dto.UserId.HasValue)
-        {
-            var userExists =
-                await _userRepository.ExistsAsync(dto.UserId.Value);
+//            if (!userExists)
+//                throw new KeyNotFoundException(
+//                    "User not found.");
+//        }
 
-            if (!userExists)
-                throw new KeyNotFoundException(
-                    "User not found.");
-        }
+//        task.Update(
+//            dto.Title,
+//            dto.Description,
+//            dto.UserId);
 
-        task.Update(
-            dto.Title,
-            dto.Description,
-            dto.UserId);
+//        _taskRepository.Update(task);
 
-        _taskRepository.Update(task);
+//        await _unitOfWork.SaveChangesAsync();
+//    }
 
-        await _unitOfWork.SaveChangesAsync();
-    }
+//    // Delete Task
 
-    // =========================
-    // Delete Task
-    // =========================
+//    public async Task DeleteAsync(int id)
+//    {
+//        var task = await _taskRepository.GetByIdAsync(id);
 
-    public async Task DeleteAsync(int id)
-    {
-        var task = await _taskRepository.GetByIdAsync(id);
+//        if (task is null)
+//            throw new KeyNotFoundException(
+//                "Task not found.");
 
-        if (task is null)
-            throw new KeyNotFoundException(
-                "Task not found.");
+//        _taskRepository.Delete(task);
 
-        _taskRepository.Delete(task);
+//        await _unitOfWork.SaveChangesAsync();
+//    }
 
-        await _unitOfWork.SaveChangesAsync();
-    }
+//
+//    // Update Status
+// 
 
-    // =========================
-    // Update Status
-    // =========================
+//    public async Task UpdateStatusAsync(
+//        int id,
+//        UpdateTaskStatusDto dto)
+//    {
+//        var task = await _taskRepository.GetByIdAsync(id);
 
-    public async Task UpdateStatusAsync(
-        int id,
-        UpdateTaskStatusDto dto)
-    {
-        var task = await _taskRepository.GetByIdAsync(id);
+//        if (task is null)
+//            throw new KeyNotFoundException(
+//                "Task not found.");
 
-        if (task is null)
-            throw new KeyNotFoundException(
-                "Task not found.");
+//        switch (dto.Status)
+//        {
+//            case DomainTaskStatus.Completed:
 
-        switch (dto.Status)
-        {
-            case DomainTaskStatus.Completed:
+//                task.Complete();
 
-                task.Complete();
+//                break;
 
-                break;
+//            case DomainTaskStatus.Pending:
 
-            case DomainTaskStatus.Pending:
+//                task.Reopen();
 
-                task.Reopen();
+//                break;
 
-                break;
+//            default:
 
-            default:
+//                throw new ArgumentException(
+//                    "Invalid task status.");
+//        }
 
-                throw new ArgumentException(
-                    "Invalid task status.");
-        }
+//        _taskRepository.Update(task);
 
-        _taskRepository.Update(task);
+//        await _unitOfWork.SaveChangesAsync();
+//    }
 
-        await _unitOfWork.SaveChangesAsync();
-    }
+//
+//    // Get Tasks By User
+// 
 
-    // =========================
-    // Get Tasks By User
-    // =========================
+//    public async Task<IEnumerable<object>> GetByUserIdAsync(
+//        int userId)
+//    {
+//        var userExists =
+//            await _userRepository.ExistsAsync(userId);
 
-    public async Task<IEnumerable<object>> GetByUserIdAsync(
-        int userId)
-    {
-        var userExists =
-            await _userRepository.ExistsAsync(userId);
+//        if (!userExists)
+//            throw new KeyNotFoundException(
+//                "User not found.");
 
-        if (!userExists)
-            throw new KeyNotFoundException(
-                "User not found.");
+//        var tasks =
+//            await _taskRepository.GetByUserIdAsync(userId);
 
-        var tasks =
-            await _taskRepository.GetByUserIdAsync(userId);
+//        return tasks.Select(MapTask);
+//    }
 
-        return tasks.Select(MapTask);
-    }
+//
+//    // Mapping
+//   
 
-    // =========================
-    // Mapping
-    // =========================
+//    private static object MapTask(TaskItem task)
+//    {
+//        return new
+//        {
+//            task.Id,
+//            task.Title,
+//            task.Description,
+//            task.Status,
+//            task.CreatedAt,
 
-    private static object MapTask(TaskItem task)
-    {
-        return new
-        {
-            task.Id,
-            task.Title,
-            task.Description,
-            task.Status,
-            task.CreatedAt,
-
-            User = task.User == null
-                ? null
-                : new
-                {
-                    task.User.Id,
-                    task.User.Name,
-                    task.User.Email
-                }
-        };
-    }
-}
+//            User = task.User == null
+//                ? null
+//                : new
+//                {
+//                    task.User.Id,
+//                    task.User.Name,
+//                    task.User.Email
+//                }
+//        };
+//    }
+//}
