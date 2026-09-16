@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="ProductManagement.API/ProductManagement.API.csproj" Id="a1efa1ce-5fd5-4e3c-ac08-6f59165cf9f7" />
+  <Project Path="ProductManagement.Application/ProductManagement.Application.csproj" />
+  <Project Path="ProductManagement.Domain/ProductManagement.Domain.csproj" />
+  <Project Path="ProductManagement.Infrastructure/ProductManagement.Infrastructure.csproj" />
+</Solution>
