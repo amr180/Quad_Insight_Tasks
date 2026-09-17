@@ -1,5 +1,3 @@
-
-
 namespace OrderManagement.Application.Interfaces;
 
 public interface IOrderService
