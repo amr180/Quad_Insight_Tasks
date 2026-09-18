@@ -3,14 +3,14 @@ a .NET full stack developer using ASP.NET Core and Angular, including CQRS, Clea
 Project to build across all levels
 Smart Task or Booking System with users, tasks or appointments, notifications, and integrations
 
-Level 1 Fundamentals
+Level 1 Fundamentals	(done)
 Learn C# basics including OOP, LINQ, and async await. Learn SQL basics including select, joins, and indexes. Understand HTTP and REST concepts.
 
 Tasks
 Build a console application for task management with add, update, delete, and list features
 Write SQL queries to filter tasks, join users with tasks, and sort data
 
-Level 2 ASP.NET Core Web API
+Level 2 ASP.NET Core Web API	(done)
 Learn controllers, routing, middleware, dependency injection, and Entity Framework Core using code first approach
 
 Tasks
@@ -20,7 +20,7 @@ Add validation using data annotations or FluentValidation
 Implement global exception handling middleware
 Create relationships between users and tasks in the database
 
-Level 3 Angular Basics
+Level 3 Angular Basics	(done)
 Learn components, modules, services, routing, reactive forms, and HTTP client
 
 Tasks
@@ -29,7 +29,7 @@ Add form validation
 Call backend API using HTTP client
 Show loading indicators
 
-Level 4 Full Stack Integration
+Level 4 Full Stack Integration	(done)
 Learn how frontend communicates with backend and handle configuration
 
 Tasks
@@ -37,7 +37,7 @@ Connect Angular app to API
 Implement pagination and search
 Handle API errors in UI
 
-Level 5 JWT Authentication and Authorization
+Level 5 JWT Authentication and Authorization	(inprogress)
 Learn how JWT works and the difference between authentication and authorization
 
 Tasks
@@ -47,7 +47,7 @@ Secure API endpoints
 In Angular store token and attach it using interceptor
 Add role based authorization such as admin and user
 
-Level 6 Clean Architecture
+Level 6 Clean Architecture	(done)
 Learn how to structure applications into layers including domain, application, infrastructure, and API
 
 Tasks
@@ -56,7 +56,7 @@ Move business logic into application layer
 Create interfaces for repositories and services
 Apply dependency inversion principle
 
-Level 7 CQRS and MediatR
+Level 7 CQRS and MediatR	(done)
 Learn command query responsibility segregation and MediatR library
 
 Tasks
@@ -65,7 +65,7 @@ Create queries such as get tasks and get task by id
 Implement handlers for commands and queries
 Separate read models from write models at a basic level
 
-Level 8 External API Integration
+Level 8 External API Integration	(inprogress)
 Learn HttpClientFactory and basic resilience patterns like retry
 
 Tasks
