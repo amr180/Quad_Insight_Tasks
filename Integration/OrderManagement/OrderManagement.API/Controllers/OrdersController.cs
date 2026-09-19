@@ -12,14 +12,14 @@ public class OrdersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<OrderDto>>> GetAll()
+    public async Task<ActionResult<List<OrderDto>>> Get()
     {
         var orders = await _orderService.GetAllOrdersAsync();
         return Ok(orders);
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<OrderDto>> GetById(int id)
+    public async Task<ActionResult<OrderDto>> Get(int id)
     {
         try
         {
@@ -33,14 +33,14 @@ public class OrdersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<OrderDto>> Create(CreateOrderDto dto)
+    public async Task<ActionResult<OrderDto>> Post(CreateOrderDto dto)
     {
         var order = await _orderService.CreateOrderAsync(dto);
-        return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
+        return CreatedAtAction(nameof(Get), new { id = order.Id }, order);
     }
 
     [HttpPut("{id:int}/status")]
-    public async Task<ActionResult<OrderDto>> UpdateStatus(int id, UpdateOrderStatusDto dto)
+    public async Task<ActionResult<OrderDto>> Put(int id, UpdateOrderStatusDto dto)
     {
         try
         {

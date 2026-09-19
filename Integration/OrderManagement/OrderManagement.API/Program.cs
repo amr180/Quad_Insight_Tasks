@@ -1,4 +1,4 @@
-
+// استخدمت Top-Level Statements مختلف عن التصميم العادي
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOrderApplicationServices();
